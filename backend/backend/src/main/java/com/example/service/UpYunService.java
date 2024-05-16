@@ -18,6 +18,6 @@ public interface UpYunService {
     public SaResult getAllImg(String page) throws UpException, IOException;
     public SaResult getAllImgData( ) throws UpException, IOException;
 
-    public SaResult upYunServiceDeleteImg(String filePath) throws UpException, IOException;
+    public SaResult upYunServiceDeleteHomeWork(String filePath) throws UpException, IOException;
 
 }

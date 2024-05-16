@@ -6,10 +6,8 @@ import com.example.service.SMSCodeService;
 import com.example.utils.AliyunSMSUtils;
 import com.example.utils.RedisUtils;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
-
 import java.util.Random;
 
 /**

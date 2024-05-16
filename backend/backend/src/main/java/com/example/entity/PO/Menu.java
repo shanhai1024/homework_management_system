@@ -9,6 +9,9 @@ import lombok.NoArgsConstructor;
 import java.io.Serializable;
 import java.sql.Date;
 
+/**
+ * @author null
+ */
 @Data
 @Builder
 @AllArgsConstructor

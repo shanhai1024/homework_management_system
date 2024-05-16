@@ -1,15 +1,14 @@
 package com.example.utils;
 
+import lombok.Getter;
+
 import java.sql.Time;
 import java.time.LocalDateTime;
 
 public class OpenTimeController {
-    private static Time openTime; // 默认为 null
-
     // 获取接口开放时间
-    public static Time getOpenTime() {
-        return openTime;
-    }
+    @Getter
+    private static Time openTime; // 默认为 null
 
     // 设置接口开放时间
     public static void setOpenTime(Time time) {

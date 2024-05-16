@@ -8,14 +8,15 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.util.Random;
 
+/**
+ * @author null
+ * 启动类
+ */
 @SpringBootApplication
 public class BackendApplication {
 
     public static void main(String[] args) throws Exception {
         SpringApplication.run(BackendApplication.class, args);
-
-
-
 
     }
 

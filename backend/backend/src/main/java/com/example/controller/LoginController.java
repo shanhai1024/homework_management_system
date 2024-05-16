@@ -1,7 +1,6 @@
 package com.example.controller;
 
 import cn.dev33.satoken.annotation.SaIgnore;
-import cn.dev33.satoken.context.SaHolder;
 import cn.dev33.satoken.secure.BCrypt;
 import cn.dev33.satoken.stp.SaTokenInfo;
 import cn.dev33.satoken.stp.StpUtil;
@@ -16,12 +15,8 @@ import com.example.utils.UserDeviceAialysis;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-
-import ua_parser.Client;
-import ua_parser.Parser;
 
 /**
  * @author Shanhai1024
@@ -98,6 +93,14 @@ public class LoginController {
     @RequestMapping("tokenInfo")
     public SaResult tokenInfo() {
         return SaResult.data(StpUtil.getTokenInfo());
+    }
+
+
+    //查询用户身份
+    @RequestMapping("getRoleList")
+    public  SaResult getRoleList(){
+       return  SaResult.data(StpUtil.getRoleList());
+
     }
 
 

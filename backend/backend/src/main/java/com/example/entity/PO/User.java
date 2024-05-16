@@ -11,6 +11,10 @@ import java.io.Serial;
 import java.io.Serializable;
 import java.util.Date;
 
+/**
+ * @author null
+ * 用户实体类
+ */
 @Data
 @Builder
 @AllArgsConstructor

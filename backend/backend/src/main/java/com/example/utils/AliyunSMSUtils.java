@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 
 /**
  * @author null
+ * 阿里云短信工具类
  */
 //@Configuration
 @Component

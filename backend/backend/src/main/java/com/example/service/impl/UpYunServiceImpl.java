@@ -5,7 +5,6 @@ import com.UpYun;
 import com.example.service.UpYunService;
 import com.example.utils.UpYunUtils;
 import com.upyun.UpException;
-import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -83,9 +82,9 @@ public SaResult getAllImg(String page) throws UpException, IOException {
     }
 
 
-//    删除图片
+//    删除作业
     @Override
-    public SaResult upYunServiceDeleteImg(String filePath) throws UpException, IOException {
+    public SaResult upYunServiceDeleteHomeWork(String filePath) throws UpException, IOException {
         boolean b = upYun.deleteFile(filePath, null);
 
         System.out.println("删除成功");

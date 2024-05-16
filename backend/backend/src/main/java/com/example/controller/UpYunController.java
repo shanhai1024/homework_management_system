@@ -2,7 +2,6 @@ package com.example.controller;
 
 import cn.dev33.satoken.annotation.SaIgnore;
 import cn.dev33.satoken.util.SaResult;
-import com.UpYun;
 import com.example.service.UpYunService;
 import com.upyun.UpException;
 import lombok.AllArgsConstructor;
@@ -11,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
 import java.io.IOException;
 
 /**
@@ -47,7 +45,7 @@ public class UpYunController {
 
     @RequestMapping("deleteImg")
     public  SaResult deleteImg(@RequestParam String filePath) throws UpException, IOException {
-       return upYunService.upYunServiceDeleteImg(filePath);
+       return upYunService.upYunServiceDeleteHomeWork(filePath);
     }
 
 }
