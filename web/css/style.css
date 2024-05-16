@@ -1,0 +1,86 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+:root{
+    font-size: 16px;
+}
+main{
+    display: flex;
+    width: 500vw;
+    height: 100vh;
+
+}
+.round{
+
+    width: 200vh;
+    height: 200vh;
+    background-color: rgb(71, 134, 234);
+    border-radius: 50%;
+    position: relative;
+
+    transform: translate(-100vh, -100vh);
+}
+.loginPage{
+
+   float: left;
+    width: 100vw;
+    height: 100vw;
+    position: absolute; /* 绝对定位 */
+    display: flex;
+
+}
+
+.switchRegisterPage{
+    width: 50vw;
+    color: white;
+    height: 50vh;
+
+
+
+}
+.switchRegisterPageContent{
+    padding-left: 30vh;
+    height: 50vh;
+
+
+
+}
+.switchRegisterPageButton{
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* 水平居中 */
+    align-items: center; /* 垂直居中 */
+    position: absolute;
+    transform: translateY(12vh);
+}
+.switchRegisterPageButton h2,
+.switchRegisterPageButton p,
+.switchRegisterPageButton button {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+
+.switchRegisterPageButton button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: transparent;
+    border: 2px solid white;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+
+
+
+.switchRegisterPage img{
+    height: 50vh;
+}
+
+.loginFrom{
+    width: 50vw;
+}
