@@ -39,6 +39,7 @@
         </dependency>
 
 
+
         <!-- Sa-Token 整合 Redis （使用 jdk 默认序列化方式） -->
         <dependency>
             <groupId>cn.dev33</groupId>

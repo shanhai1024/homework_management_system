@@ -157,7 +157,7 @@ form svg{
 .registerPage{
     z-index: 2;
     display: flex;
-    color: white;
+    /*color: white;*/
 }
 .switchLoginPageContent{
     width: 50vw;
