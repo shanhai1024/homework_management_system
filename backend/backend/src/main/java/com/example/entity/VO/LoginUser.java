@@ -1,4 +1,4 @@
-package com.example.entity.DTO;
+package com.example.entity.VO;
 
 import jakarta.validation.constraints.NotBlank;
 import lombok.Builder;

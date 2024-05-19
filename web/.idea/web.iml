@@ -11,5 +11,6 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="gsap" level="application" />
     <orderEntry type="library" name="axios" level="application" />
+    <orderEntry type="library" name="dream-msg" level="application" />
   </component>
 </module>

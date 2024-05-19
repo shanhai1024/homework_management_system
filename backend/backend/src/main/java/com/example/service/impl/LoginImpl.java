@@ -32,14 +32,14 @@ public class LoginImpl implements UserLogin {
     public SaResult userLogin(String phoneNumber, String password,String device,String smsCode) {
 
         if(!Objects.equals(redisUtils.get(phoneNumber), smsCode)){
-            return SaResult.error("验证码错误或失效请重新获取验证码");
+            return SaResult.error("验证码错误或失效请重新获取验证码或者检查您的验证码是否正确");
         }
 
 //        查询登录用户
         Optional<User> optionalUser = userRepository.findByPhoneNumber(phoneNumber);
 
         if (optionalUser.isEmpty()) {
-            return SaResult.error("用户不存在");
+            return SaResult.error("用户不存在请注册用户后再尝试登陆");
         }
         User loginUser = optionalUser.get();
         System.out.println(loginUser);

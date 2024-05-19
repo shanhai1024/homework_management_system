@@ -5,8 +5,8 @@ import cn.dev33.satoken.secure.BCrypt;
 import cn.dev33.satoken.stp.SaTokenInfo;
 import cn.dev33.satoken.stp.StpUtil;
 import cn.dev33.satoken.util.SaResult;
-import com.example.entity.DTO.DisableEntity;
-import com.example.entity.DTO.LoginUser;
+import com.example.entity.VO.DisableEntity;
+import com.example.entity.VO.LoginUser;
 import com.example.entity.PO.User;
 import com.example.repository.UserRepository;
 import com.example.service.UserLogin;
@@ -68,6 +68,7 @@ public class LoginController {
             .nickName(registerUser.getNickName())
             .userName(registerUser.getNickName())
             .createBy(1L)
+            .phoneNumber(registerUser.getPhoneNumber())
             .build();
     User save = userRepository.save(build);
     return SaResult.ok("注册成功请登录");
