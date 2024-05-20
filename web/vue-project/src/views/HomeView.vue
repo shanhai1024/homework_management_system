@@ -1,9 +1,41 @@
 <script setup>
-
+import MyMenu from "@/components/myMenu.vue";
+import MyPageHeader from "@/components/myPageHader.vue";
+import Homepage from "@/views/nestedPages/homepageContent.vue";
 </script>
 
 <template>
-  <main>
-    <h1>hello</h1>
-  </main>
+<div id="MyIndexHome">
+<!--  菜单-->
+  <div id="myMenu">
+    <MyMenu></MyMenu>
+  </div>
+
+<!--  主页-->
+  <div id="HomePage">
+<!--    页头-->
+    <MyPageHeader></MyPageHeader>
+
+<!--    页面内容-->
+    <homepage></homepage>
+
+  </div>
+</div>
 </template>
+
+<style scoped>
+#MyIndexHome{
+  display: flex;
+}
+#myMenu{
+  height: 100vh;
+
+}
+#HomePage{
+  width: 100%;
+  height: 100vh;
+  margin-left: 20px;
+}
+</style>
+
+

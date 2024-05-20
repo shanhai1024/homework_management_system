@@ -177,7 +177,7 @@ onMounted(() => {
 </script>
 
 <style scoped>
-/* 你的样式代码保持不变 */
+
 * {
   padding: 0;
   margin: 0;
@@ -190,9 +190,8 @@ main {
   width: 500vw;
   height: 100vh;
 }
-body, html {
-  margin: 0;
-  padding: 0;
+main{
+
   overflow: hidden; /* 禁止滚动条 */
 }
 .round {

@@ -10,13 +10,12 @@ spring:
     show-sql: true
     database: mysql
     hibernate:
-      ddl-auto: none
+      ddl-auto: update
     properties:
       hibernate:
         jdbc:
           use_get_generated_keys: true
         dialect: org.hibernate.dialect.MariaDB103Dialect
-
 
 
 
@@ -112,3 +111,4 @@ aliyun:
 
 system:
   smsExpireTime: 300
+debug: true
