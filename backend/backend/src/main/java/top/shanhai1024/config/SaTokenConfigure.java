@@ -39,7 +39,8 @@ public class SaTokenConfigure implements WebMvcConfigurer {
         // 注册 Sa-Token 拦截器，校验规则为 StpUtil.checkLogin() 登录校验。
         registry.addInterceptor(new SaInterceptor(handle -> StpUtil.checkLogin()))
                 .addPathPatterns("/**")
-                .excludePathPatterns("/login","echartsData","/oauth2/*","/register","/oauth2/userinfo","/images/*","/api/v1/getSMSCode/*");
+                .excludePathPatterns("/login","/oauth2/*","/register","/oauth2/userinfo","/images/*","/api/v1/getSMSCode/*");
+        System.out.println("拦截注册成功");
     }
 
     @Bean

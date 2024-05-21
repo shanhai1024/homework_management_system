@@ -189,6 +189,7 @@ main {
   display: flex;
   width: 500vw;
   height: 100vh;
+  overflow: hidden; /* 禁止滚动条 */
 }
 main{
 
@@ -339,5 +340,10 @@ form svg {
   align-items: center; /* 垂直居中 */
   position: absolute;
   transform: translateX(22vh);
+}
+</style>
+<style>
+*{
+  overflow: hidden; /* 禁止滚动条 */
 }
 </style>

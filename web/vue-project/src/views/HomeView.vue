@@ -5,22 +5,22 @@ import Homepage from "@/views/nestedPages/homepageContent.vue";
 </script>
 
 <template>
-<div id="MyIndexHome">
-<!--  菜单-->
-  <div id="myMenu">
-    <MyMenu></MyMenu>
+  <div id="MyIndexHome">
+    <!--  菜单-->
+    <div id="myMenu">
+      <MyMenu></MyMenu>
+    </div>
+
+    <!--  主页-->
+    <div id="HomePage">
+      <!--    页头-->
+      <MyPageHeader></MyPageHeader>
+
+      <!--    页面内容-->
+      <homepage></homepage>
+
+    </div>
   </div>
-
-<!--  主页-->
-  <div id="HomePage">
-<!--    页头-->
-    <MyPageHeader></MyPageHeader>
-
-<!--    页面内容-->
-    <homepage></homepage>
-
-  </div>
-</div>
 </template>
 
 <style scoped>
@@ -29,13 +29,10 @@ import Homepage from "@/views/nestedPages/homepageContent.vue";
 }
 #myMenu{
   height: 100vh;
-
 }
 #HomePage{
   width: 100%;
-  height: 100vh;
+  height: 150vh;
   margin-left: 20px;
 }
 </style>
-
-

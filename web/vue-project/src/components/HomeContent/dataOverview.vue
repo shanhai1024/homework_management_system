@@ -6,7 +6,7 @@ export default {
 
 <template>
   <div>
-    <h2>数据概览</h2>
+    <h2>实时人数统计</h2>
     <div class="boxes">
       <div class="box1 dataDisplay">
         <div class="data">
