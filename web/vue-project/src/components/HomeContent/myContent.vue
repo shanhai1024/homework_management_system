@@ -27,6 +27,7 @@ const chartDom2 = ref(null);
 const chartDom3 = ref(null);
 const chartDom4 = ref(null);
 
+
 // 总体数据浏览
 onMounted(() => {
   if (chartDom.value) {
