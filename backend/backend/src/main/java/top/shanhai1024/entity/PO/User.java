@@ -34,12 +34,12 @@ public class User implements Serializable {
     /**
      * 用户名
      */
-    @Column(unique = true)
+    @Column(unique = true,name = "user_name")
     private String userName;
     /**
      * 昵称
      */
-    @Column(unique = true)
+    @Column(unique = true ,name = "nick_name")
     private String nickName;
     /**
      * 密码
@@ -69,26 +69,32 @@ public class User implements Serializable {
     /**
      * 用户类型（0管理员，1普通用户）
      */
+    @Column(name = "user_type")
     private String userType ="1";
     /**
      * 创建人的用户id
      */
+    @Column(name = "create_by")
     private Long createBy;
     /**
      * 创建时间
      */
+    @Column(name = "create_time")
     private Date createTime;
     /**
      * 更新人
      */
+    @Column(name = "update_by")
     private Long updateBy;
     /**
      * 更新时间
      */
     @UpdateTimestamp
+    @Column(name = "update_time")
     private Date updateTime;
     /**
      * 删除标志（0代表未删除，1代表已删除）
      */
+    @Column(name = "del_flag")
     private Integer delFlag=0;
 }

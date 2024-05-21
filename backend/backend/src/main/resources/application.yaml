@@ -11,8 +11,11 @@ spring:
     database: mysql
     hibernate:
       ddl-auto: update
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
     properties:
       hibernate:
+
         jdbc:
           use_get_generated_keys: true
         dialect: org.hibernate.dialect.MariaDB103Dialect
@@ -112,3 +115,4 @@ aliyun:
 system:
   smsExpireTime: 300
 debug: true
+
