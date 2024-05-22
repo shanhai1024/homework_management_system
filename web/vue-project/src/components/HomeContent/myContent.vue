@@ -5,14 +5,44 @@
   <!-- 数据分析图 -->
   <div class="legend">
     <div class="mainLegend">
-      <h2>数据概览</h2>
+      <h2 style="color:#606266;">数据概览</h2>
       <div id="main" ref="chartDom"></div>
     </div>
+    <!-- 实时人数 -->
     <div class="sideLegend">
-      <!-- 实时人数 -->
-      <h2>人数占比</h2>
-      <div id="numberOfStudents" ref="chartDom2"></div>
-      <div id="numberOfTeachers" ref="chartDom3"></div>
+      <h2 style="color:#606266;">人数占比</h2>
+      <div class="numberOfPeopleRatio">
+        <div id="numberOfStudents" class="numberOfPeopleRatioEcharts" ref="chartDom2"></div>
+        <div class="proportionData">
+          <h3 class="studentProportion">学生占比</h3>
+          <span>已登记人数</span>
+          <p>1234</p>
+        </div>
+      </div>
+      <div class="numberOfPeopleRatio">
+        <div id="numberOfTeachers" class="numberOfPeopleRatioEcharts" ref="chartDom3"></div>
+        <div class="proportionData">
+          <h3 class="teacherProportion">老师占比</h3>
+          <span>已登记人数</span>
+          <p>1234</p>
+        </div>
+      </div>
+      <div class="numberOfPeopleRatio">
+        <div id="numberOfBusiness" class="numberOfPeopleRatioEcharts" ref="chartDom4"></div>
+        <div class="proportionData">
+          <h3 class="businessProportion">营业者占比</h3>
+          <span>已登记人数</span>
+          <p>1234</p>
+        </div>
+      </div>
+      <div class="numberOfPeopleRatio">
+        <div id="numberOfOthers" class="numberOfPeopleRatioEcharts" ref="chartDom5"></div>
+        <div class="proportionData">
+          <h3 class="otherProportion">其他</h3>
+          <span>已登记人数</span>
+          <p>1234</p>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -29,6 +59,8 @@ const responseData = ref(null);
 const chartDom = ref(null);
 const chartDom2 = ref(null);
 const chartDom3 = ref(null);
+const chartDom4 = ref(null);
+const chartDom5 = ref(null);
 
 // 异步获取数据
 const fetchData = async () => {
@@ -105,7 +137,7 @@ const initMainChart = () => {
 };
 
 // 初始化副图表
-const initSideChart = (chartDom, data) => {
+const initSideChart = (chartDom, data, colors) => {
   if (chartDom && data) {
     const myChart = echarts.init(chartDom);
     const option = {
@@ -124,10 +156,7 @@ const initSideChart = (chartDom, data) => {
             {
               value: data,
               itemStyle: {
-                color: new echarts.graphic.LinearGradient(0, 0, 1, 1, [
-                  { offset: 0, color: '#8E2DE2' },
-                  { offset: 1, color: '#4A00E0' }
-                ])
+                color: new echarts.graphic.LinearGradient(0, 0, 1, 1, colors)
               }
             },
             { value: 100 - data, itemStyle: { color: '#E0E0E0' } }
@@ -147,8 +176,22 @@ watch(responseData, (newVal) => {
   if (newVal) {
     initMainChart();
     // 初始化副图表
-    initSideChart(chartDom2.value, 60);  // 假设学生人数比例
-    initSideChart(chartDom3.value, 40);  // 假设教师人数比例
+    initSideChart(chartDom2.value, 70, [
+      { offset: 0, color: '#4facfe' },
+      { offset: 1, color: '#00f2fe' }
+    ]);  // 假设学生人数比例
+    initSideChart(chartDom3.value, 50, [
+      { offset: 0, color: '#f78ca0' },
+      { offset: 1, color: '#fe9a8b' }
+    ]);  // 假设教师人数比例
+    initSideChart(chartDom4.value, 20, [
+      { offset: 0, color: '#84fab0' },
+      { offset: 1, color: '#8fd3f4' }
+    ]);  // 假设营业者人数比例
+    initSideChart(chartDom5.value, 5, [
+      { offset: 0, color: '#fccb90' },
+      { offset: 1, color: '#d57eeb' }
+    ]);  // 假设其他人数比例
   }
 });
 </script>
@@ -167,7 +210,7 @@ watch(responseData, (newVal) => {
 }
 #main{
   width: 100%;
-  height: 700px;
+  height: 500px;
 }
 .sideLegend {
   height: 60vh;
@@ -175,8 +218,65 @@ watch(responseData, (newVal) => {
   border: 1px #72fa92 solid;
   box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
 }
-#numberOfStudents, #numberOfTeachers {
-  height: 30vh;
-  width: 100%;
+.sideLegend h2{
+  margin-left: 50px;
+}
+
+.numberOfPeopleRatio{
+  box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+  display: flex;
+  height: 10vh;
+  margin-bottom: 20px;
+}
+numberOfPeopleRatio {
+
+}
+
+.numberOfPeopleRatioEcharts{
+  height: 100%;
+  width: 20vh;
+}
+
+.proportionData{
+  margin-left: 90px;
+  height: 10px;
+}
+.proportionData h3{
+  font-size: 25px;
+}
+.proportionData span{
+  font-size: 12px;
+  color: #bcbbbb;
+}
+.proportionData p{
+  font-size: 20px;
+  color:#909399 ;
+}
+
+.proportionData h3,p {
+  margin: 0;
+  padding: 0;
+}
+
+.studentProportion{
+  background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+.teacherProportion{
+  background-image: linear-gradient(to right, #f78ca0 0%, #f9748f 19%, #fd868c 60%, #fe9a8b 100%);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.businessProportion{
+  background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+.otherProportion{
+  background-image: linear-gradient(120deg, #fccb90 0%, #d57eeb 100%);
+  -webkit-background-clip: text;
+  color: transparent;
 }
 </style>
