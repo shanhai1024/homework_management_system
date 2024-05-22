@@ -18,19 +18,43 @@
 </template>
 
 <script setup>
-import { onMounted, ref } from 'vue';
+import { onMounted, ref, watch } from 'vue';
 import DataOverview from "@/components/HomeContent/dataOverview.vue";
 import * as echarts from 'echarts';
+import axios from 'axios';
+import { ElMessage } from "element-plus";
 
+// 数据响应引用
+const responseData = ref(null);
 const chartDom = ref(null);
 const chartDom2 = ref(null);
 const chartDom3 = ref(null);
-const chartDom4 = ref(null);
 
+// 异步获取数据
+const fetchData = async () => {
+  let config = {
+    method: 'get',
+    maxBodyLength: Infinity,
+    url: 'http://127.0.0.1:8080/api/v1/echartsData',
+    headers: {
+      'token': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsb2dpblR5cGUiOiJsb2dpbiIsImxvZ2luSWQiOjEsInJuU3RyIjoiQVFkQ0UxM3lXRjFLZFZrbzdiN0tURm5xUHRHSmlEaEYifQ.LxTpvKbYV4zf5DctnhvLM8GMw97ELml4XAyRN8o2EEM',
+    },
+    data: ''
+  };
 
-// 总体数据浏览
-onMounted(() => {
-  if (chartDom.value) {
+  try {
+    const response = await axios.request(config);
+    console.log("响应数据:", response.data);
+    responseData.value = response.data;
+  } catch (error) {
+    console.log(error);
+    ElMessage.error('数据获取失败请检查网络连接或者联系管理员');
+  }
+};
+
+// 初始化主图表
+const initMainChart = () => {
+  if (chartDom.value && responseData.value) {
     const myChart = echarts.init(chartDom.value);
     const option = {
       legend: {},
@@ -39,14 +63,7 @@ onMounted(() => {
         showContent: false
       },
       dataset: {
-        source: [
-          ['年份', '2012', '2013', '2014', '2015', '2016', '2017'],
-          ['学生', 56.5, 82.1, 88.7, 70.1, 53.4, 300.1],
-          ['教师', 51.1, 51.4, 55.1, 53.3, 73.8, 68.7],
-          ['物业', 40.1, 62.2, 69.5, 36.4, 45.2, 32.5],
-          ['经营者', 25.2, 37.1, 41.2, 18, 33.9, 49.1],
-          ['其他', 25.2, 37.1, 41.2, 18, 33.9, 49.1]
-        ]
+        source: responseData.value
       },
       xAxis: { type: 'category' },
       yAxis: { gridIndex: 0 },
@@ -85,11 +102,12 @@ onMounted(() => {
 
     myChart.setOption(option);
   }
-});
-// 学生人数
-onMounted(() => {
-  if (chartDom2.value) {
-    const myChart = echarts.init(chartDom2.value);
+};
+
+// 初始化副图表
+const initSideChart = (chartDom, data) => {
+  if (chartDom && data) {
+    const myChart = echarts.init(chartDom);
     const option = {
       series: [
         {
@@ -104,7 +122,7 @@ onMounted(() => {
           },
           data: [
             {
-              value: 60,
+              value: data,
               itemStyle: {
                 color: new echarts.graphic.LinearGradient(0, 0, 1, 1, [
                   { offset: 0, color: '#8E2DE2' },
@@ -112,82 +130,25 @@ onMounted(() => {
                 ])
               }
             },
-            { value: 40, itemStyle: { color: '#E0E0E0' } }
+            { value: 100 - data, itemStyle: { color: '#E0E0E0' } }
           ]
         }
       ]
     };
     myChart.setOption(option);
   }
+};
+
+onMounted(() => {
+  fetchData();
 });
 
-// 教师人数
-onMounted(() => {
-  if (chartDom3.value) {
-    const myChart = echarts.init(chartDom3.value);
-    const option = {
-      series: [
-        {
-          type: 'pie',
-          radius: ['70%', '90%'],
-          avoidLabelOverlap: false,
-          label: {
-            show: true,
-            position: 'center',
-            formatter: '{d}%',
-            fontSize: 20
-          },
-          data: [
-            {
-              value: 40,
-              itemStyle: {
-                color: new echarts.graphic.LinearGradient(0, 0, 1, 1, [
-                  { offset: 0, color: '#FF6F61' },
-                  { offset: 1, color: '#D84315' }
-                ])
-              }
-            },
-            { value: 60, itemStyle: { color: '#E0E0E0' } }
-          ]
-        }
-      ]
-    };
-    myChart.setOption(option);
-  }
-});
-
-// 其他人数
-onMounted(() => {
-  if (chartDom4.value) {
-    const myChart = echarts.init(chartDom4.value);
-    const option = {
-      series: [
-        {
-          type: 'pie',
-          radius: ['70%', '90%'],
-          avoidLabelOverlap: false,
-          label: {
-            show: true,
-            position: 'center',
-            formatter: '{d}%',
-            fontSize: 20
-          },
-          data: [
-            {
-              value: 70,
-              itemStyle: {
-                color: new echarts.graphic.LinearGradient(0, 0, 1, 1, [
-                  { offset: 0, color: '#00C853' },
-                  { offset: 1, color: '#B2FF59' }
-                ])
-              }
-            },
-            { value: 30, itemStyle: { color: '#E0E0E0' } }
-          ]
-        }
-      ]
-    };
-    myChart.setOption(option);
+watch(responseData, (newVal) => {
+  if (newVal) {
+    initMainChart();
+    // 初始化副图表
+    initSideChart(chartDom2.value, 60);  // 假设学生人数比例
+    initSideChart(chartDom3.value, 40);  // 假设教师人数比例
   }
 });
 </script>
@@ -200,7 +161,7 @@ onMounted(() => {
 .mainLegend {
   height: 90vh;
   width: 65%;
-  //border: 1px salmon solid;
+//border: 1px salmon solid;
   box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
   margin-right: 20px;
 }

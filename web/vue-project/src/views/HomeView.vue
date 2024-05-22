@@ -1,5 +1,3 @@
-<!--主页-->
-
 <script setup>
 import MyMenu from "@/components/myMenu.vue";
 import MyPageHeader from "@/components/myPageHader.vue";
@@ -19,7 +17,6 @@ import Homepage from "@/views/nestedPages/homepageContent.vue";
       <MyPageHeader></MyPageHeader>
 
       <!--    页面内容-->
-
       <homepage></homepage>
 
     </div>
@@ -35,7 +32,7 @@ import Homepage from "@/views/nestedPages/homepageContent.vue";
 }
 #HomePage{
   width: 100%;
-  height: 150vh;
+  height: 100vh;
   margin-left: 20px;
 }
 </style>

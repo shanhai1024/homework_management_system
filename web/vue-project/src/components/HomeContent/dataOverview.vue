@@ -20,7 +20,7 @@ export default {
       </div>
       <div class="box2 dataDisplay">
         <div class="data">
-          <h2>总人数</h2>
+          <h2>学生人数</h2>
           <h1>10086</h1>
           <span size="small">人</span>
           <div class="progress-container">
@@ -30,7 +30,7 @@ export default {
       </div>
       <div class="box3 dataDisplay">
         <div class="data">
-          <h2>总人数</h2>
+          <h2>老师人数</h2>
           <h1>10086</h1>
           <span size="small">人</span>
           <div class="progress-container">
@@ -40,7 +40,7 @@ export default {
       </div>
       <div class="box4 dataDisplay">
         <div class="data">
-          <h2>总人数</h2>
+          <h2>其他服务人员</h2>
           <h1>10086</h1>
           <span size="small">人</span>
           <div class="progress-container">

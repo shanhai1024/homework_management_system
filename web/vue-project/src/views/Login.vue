@@ -11,7 +11,7 @@
             <button @click="switchToRegister">注册账号</button>
           </div>
         </div>
-        <img src="../assets/img/login.svg" alt="">
+        <img class="loginSvg" src="../assets/img/login.svg" alt="">
       </div>
       <div class="myForm">
         <form class="signForm">
@@ -181,20 +181,20 @@ onMounted(() => {
 * {
   padding: 0;
   margin: 0;
+
 }
 :root {
   font-size: 16px;
 }
+
 main {
   display: flex;
   width: 500vw;
   height: 100vh;
   overflow: hidden; /* 禁止滚动条 */
 }
-main{
 
-  overflow: hidden; /* 禁止滚动条 */
-}
+
 .round {
   width: 200vh;
   height: 200vh;
@@ -334,16 +334,14 @@ form svg {
   margin-bottom: 10px;
 }
 .switchLoginPageButton {
+  color: white;
   display: flex;
   flex-direction: column;
   justify-content: center; /* 水平居中 */
   align-items: center; /* 垂直居中 */
   position: absolute;
-  transform: translateX(22vh);
+  transform: translateX(50vh);
 }
+
 </style>
-<style>
-*{
-  overflow: hidden; /* 禁止滚动条 */
-}
-</style>
+
