@@ -54,6 +54,16 @@ import * as echarts from 'echarts';
 import axios from 'axios';
 import { ElMessage } from "element-plus";
 
+const props= defineProps(
+    {
+
+      chartsData :{
+        type: Array,
+        required:true
+      }
+    }
+
+)
 // 数据响应引用
 const responseData = ref(null);
 const chartDom = ref(null);
