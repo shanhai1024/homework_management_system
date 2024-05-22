@@ -149,7 +149,7 @@ const initSideChart = (chartDom, data, colors) => {
           label: {
             show: true,
             position: 'center',
-            formatter: '{d}%',
+            formatter: data+'%',
             fontSize: 20
           },
           data: [
@@ -165,6 +165,35 @@ const initSideChart = (chartDom, data, colors) => {
       ]
     };
     myChart.setOption(option);
+
+    // Add mouseover event listener
+    myChart.on('mouseover', function (params) {
+      if (params.componentType === 'series') {
+        const newValue = (params.dataIndex === 0) ? 10 : 90; // Example modification
+        myChart.setOption({
+          series: [{
+            data: [
+              { value: newValue, itemStyle: { color: new echarts.graphic.LinearGradient(0, 0, 1, 1, colors) } },
+              { value: 100 - newValue, itemStyle: { color: '#E0E0E0' } }
+            ]
+          }]
+        });
+      }
+    });
+
+    // Add mouseout event listener to reset data
+    myChart.on('mouseout', function (params) {
+      if (params.componentType === 'series') {
+        myChart.setOption({
+          series: [{
+            data: [
+              { value: data, itemStyle: { color: new echarts.graphic.LinearGradient(0, 0, 1, 1, colors) } },
+              { value: 100 - data, itemStyle: { color: '#E0E0E0' } }
+            ]
+          }]
+        });
+      }
+    });
   }
 };
 
@@ -179,19 +208,19 @@ watch(responseData, (newVal) => {
     initSideChart(chartDom2.value, 70, [
       { offset: 0, color: '#4facfe' },
       { offset: 1, color: '#00f2fe' }
-    ]);  // 假设学生人数比例
+    ]);  // 学生人数比例
     initSideChart(chartDom3.value, 50, [
       { offset: 0, color: '#f78ca0' },
       { offset: 1, color: '#fe9a8b' }
-    ]);  // 假设教师人数比例
+    ]);  // 教师人数比例
     initSideChart(chartDom4.value, 20, [
       { offset: 0, color: '#84fab0' },
       { offset: 1, color: '#8fd3f4' }
-    ]);  // 假设营业者人数比例
+    ]);  // 营业者人数比例
     initSideChart(chartDom5.value, 5, [
       { offset: 0, color: '#fccb90' },
       { offset: 1, color: '#d57eeb' }
-    ]);  // 假设其他人数比例
+    ]);  // 其他人数比例
   }
 });
 </script>
@@ -204,7 +233,6 @@ watch(responseData, (newVal) => {
 .mainLegend {
   height: 90vh;
   width: 65%;
-//border: 1px salmon solid;
   box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
   margin-right: 20px;
 }
@@ -215,7 +243,7 @@ watch(responseData, (newVal) => {
 .sideLegend {
   height: 60vh;
   width: 35%;
-  border: 1px #72fa92 solid;
+  //border: 1px #72fa92 solid;
   box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
 }
 .sideLegend h2{
@@ -227,9 +255,6 @@ watch(responseData, (newVal) => {
   display: flex;
   height: 10vh;
   margin-bottom: 20px;
-}
-numberOfPeopleRatio {
-
 }
 
 .numberOfPeopleRatioEcharts{
