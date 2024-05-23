@@ -1,11 +1,11 @@
 <script>
 export default {
-  name: "page3"
+  name: "personnelInformation"
 }
 </script>
 
 <template>
-  <h1>page3</h1>
+<h1>人员信息</h1>
 </template>
 
 <style scoped>

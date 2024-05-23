@@ -1,11 +1,12 @@
 <script>
+// 职业管理
 export default {
-  name: "page2"
+  name: "careerManagement"
 }
 </script>
 
 <template>
-<h1>page2</h1>
+  <h3>职业管理</h3>
 </template>
 
 <style scoped>

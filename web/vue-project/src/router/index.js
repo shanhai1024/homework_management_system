@@ -1,8 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import Login from '@/views/Login.vue';
 import Home from '@/views/HomeView.vue';
-import page2 from '@/views/nestedPages/page2.vue';
+import personnelInformation from '@/views/nestedPages/personnelInformation.vue';
 import homepageContent from '@/views/nestedPages/homepageContent.vue';
+import careerManagement from "@/views/nestedPages/careerManagement.vue";
 
 const routes = [
   {
@@ -33,11 +34,19 @@ const routes = [
         }
       },
       {
-        path: 'page2',
-        name: 'page2',
+        path: 'personnelInformation',
+        name: 'personnelInformation',
         components: {
-          default: page2,
-          content: page2
+          default: personnelInformation,
+          content: personnelInformation
+        }
+      },
+      {
+        path: 'careerManagement',
+        name: 'careerManagement',
+        components: {
+          default: careerManagement,
+          content: careerManagement
         }
       }
     ]

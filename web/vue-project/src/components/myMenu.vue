@@ -7,10 +7,10 @@
         :collapse="isCollapse"
         @open="handleOpen"
         @close="handleClose"
-    >
+     router>
       <!--    menu缩放开关-->
 
-      <el-menu-item index="0">
+      <el-menu-item >
         <div class="switch-container">
           <el-switch
               v-model="value1"
@@ -20,19 +20,19 @@
           />
         </div>
       </el-menu-item>
-      <el-menu-item index="1">
+      <el-menu-item index="/home">
         <el-icon><DataAnalysis /></el-icon>
         <template #title>主页</template>
       </el-menu-item>
 
 
-      <el-menu-item index="2" >
+      <el-menu-item index="/home/personnelInformation" >
         <el-icon><List /></el-icon>
         <template #title>人员信息</template>
       </el-menu-item>
 
 
-      <el-menu-item index="3">
+      <el-menu-item index="/home/careerManagement">
         <el-icon><setting /></el-icon>
         <template #title>职业管理</template>
       </el-menu-item>

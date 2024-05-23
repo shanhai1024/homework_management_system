@@ -1,3 +1,4 @@
+<!--人员信息-->
 <script>
 import MyContent from "@/components/HomeContent/myContent.vue";
 
@@ -9,7 +10,8 @@ export default {
 
 <template>
 <MyContent></MyContent>
-  <h3>Homepage Content</h3>
+<h1>职业管理</h1>
+
 </template>
 
 <style scoped>
