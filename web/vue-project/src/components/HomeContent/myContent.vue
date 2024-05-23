@@ -57,11 +57,11 @@ import {getToken} from "@/stores/auth.js";
 
 // 定义响应式变量
 const overviewData = ref({
-  total: 30000,
-  students: 10086,
-  teachers: 5432,
-  others: 500,
-  operator: 3421
+  total: 0,
+  students: 0,
+  teachers: 0,
+  others: 0,
+  operator: 0
 });
 
 const responseData = ref(null);
@@ -71,8 +71,48 @@ const chartDom3 = ref(null);
 const chartDom4 = ref(null);
 const chartDom5 = ref(null);
 
-// 异步获取数据
-const fetchData = async () => {
+// 异步获取 overviewData 数据
+const fetchOverviewData = async () => {
+  let config = {
+    method: 'get',
+    maxBodyLength: Infinity,
+    url: 'http://127.0.0.1:8080/api/v1/getPersonnelStatisticsData',
+    headers: {
+      'token': getToken()
+    },
+    data: ''
+  };
+
+  try {
+    const response = await axios.request(config);
+    console.log("Personnel Statistics Data:", response.data);
+
+    // 将返回的数据转换成overviewData格式
+    let total = 0;
+    response.data.forEach(item => {
+      if (item[0] === '学生') {
+        overviewData.value.students = item[1];
+      } else if (item[0] === '教师') {
+        overviewData.value.teachers = item[1];
+      } else if (item[0] === '其他') {
+        overviewData.value.others = item[1];
+      } else if (item[0] === '经营者') {
+        overviewData.value.operator = item[1];
+      } else if (item[0] === '物业') {
+        overviewData.value.others = item[1];
+      }
+      total += item[1];
+    });
+    overviewData.value.total = total;
+
+  } catch (error) {
+    console.log(error);
+    ElMessage.error('数据获取失败请检查网络连接或者联系管理员');
+  }
+};
+
+// 异步获取图表数据
+const fetchChartData = async () => {
   let config = {
     method: 'get',
     maxBodyLength: Infinity,
@@ -85,7 +125,7 @@ const fetchData = async () => {
 
   try {
     const response = await axios.request(config);
-    console.log("响应数据:", response.data);
+    console.log("Echarts Data:", response.data);
     responseData.value = response.data;
   } catch (error) {
     console.log(error);
@@ -207,42 +247,41 @@ const initSideChart = (chartDom, data, colors) => {
 };
 
 onMounted(() => {
-  fetchData();
+  fetchOverviewData();
+  fetchChartData();
 });
 
+watch(responseData,(newVal) => {
+  if (newVal) {
+    // 初始化主图表
+    initMainChart();
 
-watch(responseData,(newVal)=>{
+    // 计算比例
+    let studentProportion = Math.round((overviewData.value.students / overviewData.value.total) * 100);
+    let teachersProportion = Math.round((overviewData.value.teachers / overviewData.value.total) * 100);
+    let operatorProportion = Math.round((overviewData.value.operator / overviewData.value.total) * 100);
+    let othersProportion = Math.round((overviewData.value.others / overviewData.value.total) * 100);
 
-    if (newVal) {
-      // 初始化主图表
-      initMainChart();
-      // 计算比例
-      let studentProportion =Math.round((overviewData.value.students/overviewData.value.total) * 100);
-      console.log(studentProportion)
-      let teachersProportion =Math.round((overviewData.value.teachers/overviewData.value.total) * 100);
-      let overviewProportion =Math.round((overviewData.value.others/overviewData.value.total) * 100);
-      let othersProportion =Math.round((overviewData.value.others/overviewData.value.total) * 100);
-
-      // 计算比例并初始化副图表
-      initSideChart(chartDom2.value,studentProportion , [
-        { offset: 0, color: '#4facfe' },
-        { offset: 1, color: '#00f2fe' }
-      ]);
-      initSideChart(chartDom3.value, teachersProportion, [
-        { offset: 0, color: '#f78ca0' },
-        { offset: 1, color: '#fe9a8b' }
-      ]);
-      initSideChart(chartDom4.value, overviewProportion, [
-        { offset: 0, color: '#84fab0' },
-        { offset: 1, color: '#8fd3f4' }
-      ]);
-      initSideChart(chartDom5.value,  othersProportion, [
-        { offset: 0, color: '#fccb90' },
-        { offset: 1, color: '#d57eeb' }
-      ]);
-    };
-
+    // 计算比例并初始化副图表
+    initSideChart(chartDom2.value, studentProportion, [
+      { offset: 0, color: '#4facfe' },
+      { offset: 1, color: '#00f2fe' }
+    ]);
+    initSideChart(chartDom3.value, teachersProportion, [
+      { offset: 0, color: '#f78ca0' },
+      { offset: 1, color: '#fe9a8b' }
+    ]);
+    initSideChart(chartDom4.value, operatorProportion, [
+      { offset: 0, color: '#84fab0' },
+      { offset: 1, color: '#8fd3f4' }
+    ]);
+    initSideChart(chartDom5.value, othersProportion, [
+      { offset: 0, color: '#fccb90' },
+      { offset: 1, color: '#d57eeb' }
+    ]);
+  }
 });
+
 
 </script>
 
