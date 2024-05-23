@@ -2,8 +2,6 @@ package top.shanhai1024.entity.PO;
 
 import jakarta.persistence.*;
 import lombok.Data;
-
-
 import java.util.List;
 
 @Entity
@@ -19,7 +17,6 @@ public class Category {
     private String name;
 
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<YearlyData> yearlyData;
-
+    private List<Personnel> personnel;
 
 }

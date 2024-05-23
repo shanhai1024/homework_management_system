@@ -15,7 +15,9 @@ class BackendApplicationTests {
     @Test
     void contextLoads() {
         List<Object[]> personnelStatisticsData = personnelService.getPersonnelStatisticsData();
-        System.out.println(personnelStatisticsData);
+        personnelStatisticsData
+                        .forEach(System.out::println);
+
     }
 
 

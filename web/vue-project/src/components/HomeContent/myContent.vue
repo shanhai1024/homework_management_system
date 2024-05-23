@@ -1,6 +1,6 @@
 <template>
   <!-- 数据概览 -->
-  <data-overview></data-overview>
+  <data-overview :overviewData="overviewData"></data-overview>
 
   <!-- 数据分析图 -->
   <div class="legend">
@@ -16,7 +16,7 @@
         <div class="proportionData">
           <h3 class="studentProportion">学生占比</h3>
           <span>已登记人数</span>
-          <p>1234</p>
+          <p>{{ overviewData.students }}</p>
         </div>
       </div>
       <div class="numberOfPeopleRatio">
@@ -24,7 +24,7 @@
         <div class="proportionData">
           <h3 class="teacherProportion">老师占比</h3>
           <span>已登记人数</span>
-          <p>1234</p>
+          <p>{{ overviewData.teachers }}</p>
         </div>
       </div>
       <div class="numberOfPeopleRatio">
@@ -32,7 +32,7 @@
         <div class="proportionData">
           <h3 class="businessProportion">营业者占比</h3>
           <span>已登记人数</span>
-          <p>1234</p>
+          <p>{{ overviewData.others }}</p>
         </div>
       </div>
       <div class="numberOfPeopleRatio">
@@ -40,7 +40,7 @@
         <div class="proportionData">
           <h3 class="otherProportion">其他</h3>
           <span>已登记人数</span>
-          <p>1234</p>
+          <p>{{ overviewData.others }}</p>
         </div>
       </div>
     </div>
@@ -53,18 +53,17 @@ import DataOverview from "@/components/HomeContent/dataOverview.vue";
 import * as echarts from 'echarts';
 import axios from 'axios';
 import { ElMessage } from "element-plus";
+import {getToken} from "@/stores/auth.js";
 
-const props= defineProps(
-    {
+// 定义响应式变量
+const overviewData = ref({
+  total: 30000,
+  students: 10086,
+  teachers: 5432,
+  others: 500,
+  operator: 3421
+});
 
-      chartsData :{
-        type: Array,
-        required:true
-      }
-    }
-
-)
-// 数据响应引用
 const responseData = ref(null);
 const chartDom = ref(null);
 const chartDom2 = ref(null);
@@ -79,7 +78,7 @@ const fetchData = async () => {
     maxBodyLength: Infinity,
     url: 'http://127.0.0.1:8080/api/v1/echartsData',
     headers: {
-      'token': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsb2dpblR5cGUiOiJsb2dpbiIsImxvZ2luSWQiOjEsInJuU3RyIjoiQVFkQ0UxM3lXRjFLZFZrbzdiN0tURm5xUHRHSmlEaEYifQ.LxTpvKbYV4zf5DctnhvLM8GMw97ELml4XAyRN8o2EEM',
+      'token': getToken()
     },
     data: ''
   };
@@ -211,28 +210,40 @@ onMounted(() => {
   fetchData();
 });
 
-watch(responseData, (newVal) => {
-  if (newVal) {
-    initMainChart();
-    // 初始化副图表
-    initSideChart(chartDom2.value, 70, [
-      { offset: 0, color: '#4facfe' },
-      { offset: 1, color: '#00f2fe' }
-    ]);  // 学生人数比例
-    initSideChart(chartDom3.value, 50, [
-      { offset: 0, color: '#f78ca0' },
-      { offset: 1, color: '#fe9a8b' }
-    ]);  // 教师人数比例
-    initSideChart(chartDom4.value, 20, [
-      { offset: 0, color: '#84fab0' },
-      { offset: 1, color: '#8fd3f4' }
-    ]);  // 营业者人数比例
-    initSideChart(chartDom5.value, 5, [
-      { offset: 0, color: '#fccb90' },
-      { offset: 1, color: '#d57eeb' }
-    ]);  // 其他人数比例
-  }
+
+watch(responseData,(newVal)=>{
+
+    if (newVal) {
+      // 初始化主图表
+      initMainChart();
+      // 计算比例
+      let studentProportion =Math.round((overviewData.value.students/overviewData.value.total) * 100);
+      console.log(studentProportion)
+      let teachersProportion =Math.round((overviewData.value.teachers/overviewData.value.total) * 100);
+      let overviewProportion =Math.round((overviewData.value.others/overviewData.value.total) * 100);
+      let othersProportion =Math.round((overviewData.value.others/overviewData.value.total) * 100);
+
+      // 计算比例并初始化副图表
+      initSideChart(chartDom2.value,studentProportion , [
+        { offset: 0, color: '#4facfe' },
+        { offset: 1, color: '#00f2fe' }
+      ]);
+      initSideChart(chartDom3.value, teachersProportion, [
+        { offset: 0, color: '#f78ca0' },
+        { offset: 1, color: '#fe9a8b' }
+      ]);
+      initSideChart(chartDom4.value, overviewProportion, [
+        { offset: 0, color: '#84fab0' },
+        { offset: 1, color: '#8fd3f4' }
+      ]);
+      initSideChart(chartDom5.value,  othersProportion, [
+        { offset: 0, color: '#fccb90' },
+        { offset: 1, color: '#d57eeb' }
+      ]);
+    };
+
 });
+
 </script>
 
 <style scoped>
@@ -242,74 +253,64 @@ watch(responseData, (newVal) => {
 }
 .mainLegend {
   height: 90vh;
-  width: 65%;
-  box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+  width: 80%;
   margin-right: 20px;
 }
-#main{
+#main {
   width: 100%;
   height: 500px;
 }
 .sideLegend {
   height: 60vh;
   width: 35%;
-  //border: 1px #72fa92 solid;
-  box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
 }
-.sideLegend h2{
+.sideLegend h2 {
   margin-left: 50px;
 }
-
-.numberOfPeopleRatio{
-  box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+.numberOfPeopleRatio {
   display: flex;
   height: 10vh;
   margin-bottom: 20px;
 }
-
-.numberOfPeopleRatioEcharts{
+.numberOfPeopleRatioEcharts {
   height: 100%;
-  width: 20vh;
+  width: 10vh;
 }
-
-.proportionData{
-  margin-left: 90px;
+.proportionData {
+  margin-left: 20px;
   height: 10px;
 }
-.proportionData h3{
+.proportionData h3 {
   font-size: 25px;
 }
-.proportionData span{
+.proportionData span {
   font-size: 12px;
   color: #bcbbbb;
 }
-.proportionData p{
+.proportionData p {
   font-size: 20px;
-  color:#909399 ;
+  color: #909399;
 }
-
-.proportionData h3,p {
+.proportionData h3, p {
   margin: 0;
   padding: 0;
 }
-
-.studentProportion{
+.studentProportion {
   background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
   -webkit-background-clip: text;
   color: transparent;
 }
-.teacherProportion{
+.teacherProportion {
   background-image: linear-gradient(to right, #f78ca0 0%, #f9748f 19%, #fd868c 60%, #fe9a8b 100%);
   -webkit-background-clip: text;
   color: transparent;
 }
-
-.businessProportion{
+.businessProportion {
   background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
   -webkit-background-clip: text;
   color: transparent;
 }
-.otherProportion{
+.otherProportion {
   background-image: linear-gradient(120deg, #fccb90 0%, #d57eeb 100%);
   -webkit-background-clip: text;
   color: transparent;

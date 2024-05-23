@@ -3,10 +3,7 @@ package top.shanhai1024.entity.PO;
 import jakarta.persistence.*;
 import lombok.Data;
 
-
-
 /**
- * @author null
  * 人员实体类
  */
 @Entity
@@ -18,9 +15,6 @@ public class Personnel {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-  @Column(name = "categories_id")
-  private Integer categoriesId;
-
   @Column(name = "name")
   private String name;
 
@@ -30,15 +24,14 @@ public class Personnel {
   @Column(name = "phone_number")
   private Long phoneNumber;
 
-  @Column(name = "email") 
+  @Column(name = "email")
   private String email;
 
   @Column(name = "class_id")
   private Integer classId;
 
   @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "category_id")
+  @JoinColumn(name = "categories_id")
   private Category category;
-
 
 }

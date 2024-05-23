@@ -6,13 +6,8 @@ import top.shanhai1024.entity.PO.Personnel;
 
 import java.util.List;
 
-/**
- * @author null
- */
-public interface PersonnelRepository extends JpaRepository<Integer, Personnel> {
+public interface PersonnelRepository extends JpaRepository<Personnel, Integer> {
 
-
-
-    @Query("SELECT Category .name,COUNT(Personnel.name) FROM Personnel JOIN Category ON Category.id=Personnel.categoriesId GROUP BY Category.name")
-    public List<Object[]> getPersonnelStatisticsData();
+    @Query("SELECT c.name, COUNT(p.name) FROM Personnel p JOIN p.category c GROUP BY c.name")
+    List<Object[]> getPersonnelStatisticsData();
 }

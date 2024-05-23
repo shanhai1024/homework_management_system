@@ -7,9 +7,6 @@ import top.shanhai1024.service.PersonnelService;
 
 import java.util.List;
 
-/**
- * @author null
- */
 @Service
 @AllArgsConstructor
 public class PersonnelServiceImpl implements PersonnelService {

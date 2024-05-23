@@ -8,15 +8,19 @@ import cn.dev33.satoken.util.SaResult;
 import top.shanhai1024.entity.VO.DisableEntity;
 import top.shanhai1024.entity.VO.LoginUser;
 import top.shanhai1024.entity.PO.User;
+import top.shanhai1024.entity.VO.RegisterUser;
 import top.shanhai1024.repository.UserRepository;
 import top.shanhai1024.service.UserLogin;
 import top.shanhai1024.service.UserLogout;
+import top.shanhai1024.service.UserRegisterServer;
 import top.shanhai1024.utils.UserDeviceAialysis;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Objects;
 
 /**
  * @author Shanhai1024
@@ -34,6 +38,7 @@ public class LoginController {
     private final UserLogout userLogout;
     private final UserRepository userRepository;
     private final UserDeviceAialysis userDeviceAialysis;
+    private final UserRegisterServer userRegisterServer;
 
 
     /**
@@ -61,17 +66,8 @@ public class LoginController {
 //    用户注册
 @PostMapping("register")
 @SaIgnore
-
-    public SaResult register(@RequestBody @Validated User registerUser) {
-    User build = User.builder()
-            .password(BCrypt.hashpw(registerUser.getPassword(), BCrypt.gensalt()) )
-            .nickName(registerUser.getNickName())
-            .userName(registerUser.getNickName())
-            .createBy(1L)
-            .phoneNumber(registerUser.getPhoneNumber())
-            .build();
-    User save = userRepository.save(build);
-    return SaResult.ok("注册成功请登录");
+   public SaResult register(@RequestBody @Validated RegisterUser registerUser) {
+    return userRegisterServer.register(registerUser);
 
 }
 

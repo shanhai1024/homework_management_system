@@ -1,9 +1,3 @@
-<script>
-export default {
-  name: "dataOverview"
-}
-</script>
-
 <template>
   <div>
     <h2 style="color:#606266;">实时人数统计</h2>
@@ -11,46 +5,57 @@ export default {
       <div class="box1 dataDisplay">
         <div class="data">
           <h2>总人数</h2>
-          <h1>10086</h1>
+          <h1>{{ overviewData.total }}</h1>
           <span size="small">人</span>
           <div class="progress-container">
-            <el-progress :percentage="50" class="white-progress" />
+            <el-progress :percentage="((overviewData.total / overviewData.total) * 100).toFixed(2)" class="white-progress" />
           </div>
         </div>
       </div>
       <div class="box2 dataDisplay">
         <div class="data">
           <h2>学生人数</h2>
-          <h1>10086</h1>
+          <h1>{{ overviewData.students }}</h1>
           <span size="small">人</span>
           <div class="progress-container">
-            <el-progress :percentage="50" class="white-progress" />
+            <el-progress :percentage="((overviewData.students / overviewData.total) * 100).toFixed(2)" class="white-progress" />
           </div>
         </div>
       </div>
       <div class="box3 dataDisplay">
         <div class="data">
           <h2>老师人数</h2>
-          <h1>10086</h1>
+          <h1>{{ overviewData.teachers }}</h1>
           <span size="small">人</span>
           <div class="progress-container">
-            <el-progress :percentage="50" class="white-progress" />
+            <el-progress :percentage="((overviewData.teachers / overviewData.total) * 100).toFixed(2)" class="white-progress" />
           </div>
         </div>
       </div>
       <div class="box4 dataDisplay">
         <div class="data">
           <h2>其他服务人员</h2>
-          <h1>10086</h1>
+          <h1>{{ overviewData.others +overviewData.operator}}</h1>
           <span size="small">人</span>
           <div class="progress-container">
-            <el-progress :percentage="50" class="white-progress" />
+            <el-progress :percentage="((overviewData.others /(overviewData.others +overviewData.operator)) * 100).toFixed()" class="white-progress" />
           </div>
         </div>
       </div>
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  props: {
+    overviewData: {
+      type: Object,
+      required: true
+    }
+  }
+};
+</script>
 
 <style scoped>
 .boxes {
