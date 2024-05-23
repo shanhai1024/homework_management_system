@@ -1,5 +1,6 @@
 <template>
   <div w-260px>
+
     <el-menu
         default-active="2"
         class="el-menu-vertical-demo"
@@ -7,17 +8,37 @@
         @open="handleOpen"
         @close="handleClose"
     >
+      <!--    menu缩放开关-->
+
       <el-menu-item index="0">
         <div class="switch-container">
           <el-switch
               v-model="value1"
-              :active-action-icon="View"
-              :inactive-action-icon="Hide"
+              :active-action-icon="Hide"
+              :inactive-action-icon="View"
               @change="handleSwitchChange"
           />
         </div>
       </el-menu-item>
-      <el-sub-menu index="1">
+      <el-menu-item index="1">
+        <el-icon><DataAnalysis /></el-icon>
+        <template #title>主页</template>
+      </el-menu-item>
+
+
+      <el-menu-item index="2" >
+        <el-icon><List /></el-icon>
+        <template #title>人员信息</template>
+      </el-menu-item>
+
+
+      <el-menu-item index="3">
+        <el-icon><setting /></el-icon>
+        <template #title>职业管理</template>
+      </el-menu-item>
+
+
+      <el-sub-menu index="4">
         <template #title>
           <el-icon><location /></el-icon>
           <span>Navigator One</span>
@@ -35,18 +56,6 @@
           <el-menu-item index="1-4-1">item one</el-menu-item>
         </el-sub-menu>
       </el-sub-menu>
-      <el-menu-item index="2">
-        <el-icon><icon-menu /></el-icon>
-        <template #title>Navigator Two</template>
-      </el-menu-item>
-      <el-menu-item index="3" disabled>
-        <el-icon><document /></el-icon>
-        <template #title>Navigator Three</template>
-      </el-menu-item>
-      <el-menu-item index="4">
-        <el-icon><setting /></el-icon>
-        <template #title>Navigator Four</template>
-      </el-menu-item>
     </el-menu>
   </div>
 </template>
@@ -59,7 +68,7 @@ import {
   Location,
   Setting,
 } from '@element-plus/icons-vue';
-import { Hide, View } from '@element-plus/icons-vue';
+import { Hide, List,View,DataAnalysis } from '@element-plus/icons-vue';
 
 const value1 = ref(false);
 const isCollapse = ref(false);
@@ -79,9 +88,13 @@ const handleClose = (key: string, keyPath: string[]) => {
 
 </script>
 
-<style>
+<style scoped>
+
 .el-menu-vertical-demo:not(.el-menu--collapse) {
   min-height: 400px;
+}
+el-menu{
+  height: 100vh;
 }
 
 .switch-container {

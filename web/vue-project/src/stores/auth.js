@@ -19,3 +19,6 @@ export function removeToken() {
 export function isLoggedIn() {
     return !!getToken();
 }
+
+export default class router {
+}

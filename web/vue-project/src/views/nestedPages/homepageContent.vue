@@ -9,7 +9,7 @@ export default {
 
 <template>
 <MyContent></MyContent>
-
+  <h3>Homepage Content</h3>
 </template>
 
 <style scoped>

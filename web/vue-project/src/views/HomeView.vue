@@ -1,7 +1,6 @@
 <script setup>
 import MyMenu from "@/components/myMenu.vue";
 import MyPageHeader from "@/components/myPageHader.vue";
-import Homepage from "@/views/nestedPages/homepageContent.vue";
 </script>
 
 <template>
@@ -16,21 +15,20 @@ import Homepage from "@/views/nestedPages/homepageContent.vue";
       <!--    页头-->
       <MyPageHeader></MyPageHeader>
 
-      <!--    页面内容-->
-      <homepage></homepage>
-
+      <!--    主页面内容-->
+      <router-view name="content"></router-view> <!-- 使用了名为 content 的 router-view -->
     </div>
   </div>
 </template>
 
 <style scoped>
-#MyIndexHome{
+#MyIndexHome {
   display: flex;
 }
-#myMenu{
+#myMenu {
   height: 100vh;
 }
-#HomePage{
+#HomePage {
   width: 100%;
   height: 100vh;
   margin-left: 20px;
