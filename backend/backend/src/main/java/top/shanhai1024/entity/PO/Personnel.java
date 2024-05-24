@@ -15,7 +15,7 @@ public class Personnel {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-  @Column(name = "name")
+  @Column(name = "name", nullable = false)
   private String name;
 
   @Column(name = "sex")
@@ -34,4 +34,7 @@ public class Personnel {
   @JoinColumn(name = "categories_id")
   private Category category;
 
+  @ManyToOne(fetch = FetchType.EAGER)
+  @JoinColumn(name = "class_id", insertable = false, updatable = false) // 注意这里要与 classId 对应
+  private aClass aClass;
 }
