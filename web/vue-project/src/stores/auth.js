@@ -7,7 +7,7 @@ export function getToken() {
 // 设置token
 export function setToken(token) {
 
-    localStorage.setItem('token', "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsb2dpblR5cGUiOiJsb2dpbiIsImxvZ2luSWQiOjEsInJuU3RyIjoiWFFIZU9yMUxFVktTWFdOYnhPeHA2WVZjUHo2VFZTRXMifQ.BS76p-LcPIi1NAKqCOesPRMW0MV84ZnVKxLU0ghUXOA");
+    localStorage.setItem('token', token);
 }
 
 // 移除token

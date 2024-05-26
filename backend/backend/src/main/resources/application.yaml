@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/homework-management
+    url: jdbc:mysql://localhost:3306/personnel_managements
     driver-class-name: com.mysql.cj.jdbc.Driver
     password: 12345678
     username: root
@@ -10,7 +10,7 @@ spring:
     show-sql: true
     database: mysql
     hibernate:
-      ddl-auto: update
+      ddl-auto: none
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
     properties:
@@ -115,4 +115,5 @@ aliyun:
 system:
   smsExpireTime: 300
 debug: true
-
+server:
+  port: 8080

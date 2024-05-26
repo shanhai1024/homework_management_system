@@ -28,9 +28,9 @@ public class SMSCodeServiceImpl implements SMSCodeService {
 
 
 
-        String  SMSCode= String.valueOf(new Random().nextInt(100000,999999));
-        aliyunSMSUtils.sendCAPTCHA(phoneNumber,SMSCode);
-        redisUtils.set(phoneNumber,SMSCode,redisConfig.getTimeout());
+        String sMSCode = String.valueOf(new Random().nextInt(100000,999999));
+        aliyunSMSUtils.sendCAPTCHA(phoneNumber,sMSCode);
+        redisUtils.set(phoneNumber,sMSCode,redisConfig.getTimeout());
         return SaResult.get(200,"获取验证码成功请注意查收",null);
     }
 }

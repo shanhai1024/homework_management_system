@@ -10,7 +10,6 @@ export default {
 
 <template>
 <MyContent></MyContent>
-<h1>职业管理</h1>
 
 </template>
 

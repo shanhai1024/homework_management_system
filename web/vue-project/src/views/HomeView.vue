@@ -23,10 +23,13 @@ import MyPageHeader from "@/components/myPageHader.vue";
 
 <style scoped>
 #MyIndexHome {
+
   display: flex;
 }
 #myMenu {
   height: 100vh;
+  position: sticky;
+  left: 0;
 }
 #HomePage {
   width: 100%;
