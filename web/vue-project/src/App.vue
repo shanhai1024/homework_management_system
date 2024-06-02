@@ -6,5 +6,8 @@
 </script>
 
 <style scoped>
+template{
+  width: 100%;
+}
 
 </style>

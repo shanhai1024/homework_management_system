@@ -95,7 +95,7 @@ const login = () => {
     smsCode: loginSMSCode.value
   });
 
-  axios.post('http://127.0.0.1:8080/api/v1/login', data, {
+  axios.post(`${import.meta.env.VITE_BASE_URL}/login`, data, {
     headers: {
       'Content-Type': 'application/json'
     }
@@ -127,7 +127,7 @@ const register = () => {
     smsCode: registerSMSCode.value
   });
 
-  axios.post('http://127.0.0.1:8080/api/v1/register', data, {
+  axios.post(`${import.meta.env.VITE_BASE_URL}/register`, data, {
     headers: {
       'Content-Type': 'application/json'
     }
@@ -155,7 +155,7 @@ const getSMSCode = (isLogin) => {
   const phoneNumber = isLogin ? loginPhoneNumber.value : registerPhoneNumber.value;
   const data = JSON.stringify({ phoneNumber });
 
-  axios.post('http://127.0.0.1:8080/api/v1/getSMSCode', data, {
+  axios.post(`${import.meta.env.VITE_BASE_URL}/getSMSCode`, data, {
     headers: {
       'Content-Type': 'application/json'
     }

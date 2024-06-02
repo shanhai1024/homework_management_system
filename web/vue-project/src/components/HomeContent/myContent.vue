@@ -32,7 +32,7 @@
         <div class="proportionData">
           <h3 class="businessProportion">营业者占比</h3>
           <span>已登记人数</span>
-          <p>{{ overviewData.others }}</p>
+          <p>{{ overviewData.operator }}</p>
         </div>
       </div>
       <div class="numberOfPeopleRatio">
@@ -53,7 +53,7 @@ import DataOverview from "@/components/HomeContent/dataOverview.vue";
 import * as echarts from 'echarts';
 import axios from 'axios';
 import { ElMessage } from "element-plus";
-import {getToken} from "@/stores/auth.js";
+import { getToken } from "@/stores/auth.js";
 
 // 定义响应式变量
 const overviewData = ref({
@@ -76,7 +76,7 @@ const fetchOverviewData = async () => {
   let config = {
     method: 'get',
     maxBodyLength: Infinity,
-    url: 'http://127.0.0.1:8080/api/v1/getPersonnelStatisticsData',
+    url: `${import.meta.env.VITE_BASE_URL}/getPersonnelStatisticsData`,
     headers: {
       'token': getToken()
     },
@@ -87,7 +87,7 @@ const fetchOverviewData = async () => {
     const response = await axios.request(config);
     console.log("Personnel Statistics Data:", response.data);
 
-    // 将返回的数据转换成overviewData格式
+    // 将返回的数据转换成 overviewData 格式
     let total = 0;
     response.data.forEach(item => {
       if (item[0] === '学生') {
@@ -107,7 +107,7 @@ const fetchOverviewData = async () => {
 
   } catch (error) {
     console.log(error);
-    ElMessage.error('数据获取失败请检查网络连接或者联系管理员');
+    ElMessage.error('数据获取失败，请检查网络连接或者联系管理员');
   }
 };
 
@@ -116,7 +116,7 @@ const fetchChartData = async () => {
   let config = {
     method: 'get',
     maxBodyLength: Infinity,
-    url: 'http://127.0.0.1:8080/api/v1/echartsData',
+    url: `${import.meta.env.VITE_BASE_URL}/echartsData`,
     headers: {
       'token': getToken()
     },
@@ -129,7 +129,7 @@ const fetchChartData = async () => {
     responseData.value = response.data;
   } catch (error) {
     console.log(error);
-    ElMessage.error('数据获取失败请检查网络连接或者联系管理员');
+    ElMessage.error('数据获取失败，请检查网络连接或者联系管理员');
   }
 };
 
@@ -187,7 +187,7 @@ const initMainChart = () => {
 
 // 初始化副图表
 const initSideChart = (chartDom, data, colors) => {
-  if (chartDom && data) {
+  if (chartDom && data !== undefined) {
     const myChart = echarts.init(chartDom);
     const option = {
       series: [
@@ -198,7 +198,7 @@ const initSideChart = (chartDom, data, colors) => {
           label: {
             show: true,
             position: 'center',
-            formatter: data+'%',
+            formatter: data + '%',
             fontSize: 20
           },
           data: [
@@ -218,7 +218,7 @@ const initSideChart = (chartDom, data, colors) => {
     // Add mouseover event listener
     myChart.on('mouseover', function (params) {
       if (params.componentType === 'series') {
-        const newValue = (params.dataIndex === 0) ? 10 : 90; // Example modification
+        const newValue = (params.dataIndex === 0) ? data + 10 : 90 - data; // 修改数据而不是使用固定值
         myChart.setOption({
           series: [{
             data: [
@@ -251,7 +251,7 @@ onMounted(() => {
   fetchChartData();
 });
 
-watch(responseData,(newVal) => {
+watch(responseData, (newVal) => {
   if (newVal) {
     // 初始化主图表
     initMainChart();
@@ -262,7 +262,7 @@ watch(responseData,(newVal) => {
     let operatorProportion = Math.round((overviewData.value.operator / overviewData.value.total) * 100);
     let othersProportion = Math.round((overviewData.value.others / overviewData.value.total) * 100);
 
-    // 计算比例并初始化副图表
+    // 初始化副图表
     initSideChart(chartDom2.value, studentProportion, [
       { offset: 0, color: '#4facfe' },
       { offset: 1, color: '#00f2fe' }
@@ -281,8 +281,6 @@ watch(responseData,(newVal) => {
     ]);
   }
 });
-
-
 </script>
 
 <style scoped>

@@ -70,8 +70,8 @@ import {
 } from '@element-plus/icons-vue';
 import { Hide, List,View,DataAnalysis } from '@element-plus/icons-vue';
 
-const value1 = ref(false);
-const isCollapse = ref(false);
+const value1 = ref(true);
+const isCollapse = ref(true);
 
 const handleSwitchChange = (newValue: boolean) => {
   console.log('Switch changed:', newValue);

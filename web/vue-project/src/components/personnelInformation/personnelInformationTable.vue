@@ -1,7 +1,10 @@
 <template>
   <div class="home">
-    <el-table :data="tableData()" style="width: 100%">
-      <el-table-column type="index" label="id" width="50" />
+    <!-- 搜索输入框 -->
+    <el-input v-model="searchQuery" placeholder="搜索..." style="margin-bottom: 20px; width: 300px;"></el-input>
+
+    <el-table :data="filteredData" style="width: 100%">
+      <el-table-column prop="id" label="ID" width="50" />
       <el-table-column prop="name" label="名字" width="180" />
       <el-table-column prop="gender" label="性别" width="180" />
       <el-table-column prop="phoneNumber" label="电话" width="280" />
@@ -25,7 +28,7 @@
     </div>
 
     <!-- 编辑对话框 -->
-    <el-dialog  v-model="editDialogVisible" title="编辑信息">
+    <el-dialog v-model="editDialogVisible" title="编辑信息">
       <el-form :model="editForm">
         <el-form-item label="名字">
           <el-input v-model="editForm.name"></el-input>
@@ -51,46 +54,41 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, reactive, toRefs } from "vue";
+<script>
+import { defineComponent, reactive, toRefs, onMounted, computed } from "vue";
 import { ElMessageBox, ElMessage } from "element-plus";
-import {getToken} from "@/stores/auth.js";
 import axios from 'axios';
-import FormData  from "form-data"
-let data = new FormData();
+import {getToken} from "@/stores/auth.js";
 
 export default defineComponent({
   name: "personnelInformationTable",
   setup() {
-    const allTableData = reactive([
-      { id: 1, date: "2016-05-03", name: "Tom", gender: "男", phoneNumber: "1234567890", email: "tom@example.com", job: "后勤" },
-      { id: 2, date: "2016-05-02", name: "Jerry", gender: "女", phoneNumber: "0987654321", email: "jerry@example.com", job: "老师" },
-      { id: 3, date: "2017-01-23", name: "Alice", gender: "女", phoneNumber: "1231231234", email: "alice@example.com", job: "学生" },
-      { id: 4, date: "2018-11-14", name: "Bob", gender: "男", phoneNumber: "9876543210", email: "bob@example.com", job: "食堂经理" },
-      { id: 5, date: "2018-1-14", name: "Bob", gender: "男", phoneNumber: "9876543210", email: "bob@example.com", job: "学生" },
-      { id: 6, date: "2018-6-18", name: "lisi", gender: "男", phoneNumber: "9876543210", email: "lisi@example.com", job: "老师" },
-      { id: 7, date: "2018-3-24", name: "Bob", gender: "男", phoneNumber: "9876543210", email: "bob@example.com", job: "食堂经理" },
-      { id: 8, date: "2018-1-28", name: "Bob", gender: "男", phoneNumber: "9876543210", email: "bob@example.com", job: "食堂经理" },
-      { id: 9, date: "2018-1-28", name: "Bob", gender: "男", phoneNumber: "9876543210", email: "bob@example.com", job: "食堂经理" },
-      { id: 10, date: "2018-1-28", name: "Bob", gender: "男", phoneNumber: "9876543210", email: "bob@example.com", job: "食堂经理" },
-      { id: 11, date: "2018-1-28", name: "Bob", gender: "男", phoneNumber: "9876543210", email: "bob@example.com", job: "食堂经理" },
-      { id: 12, date: "2018-7-17", name: "Bob", gender: "男", phoneNumber: "9876543210", email: "bob@example.com", job: "食堂经理" },
-
-    ]);
-
     const state = reactive({
+      allTableData: [],
       page: 1,
       limit: 10,
-      total: allTableData.length,
+      total: 0,
+      searchQuery: '',
       editDialogVisible: false,
       editForm: { id: null, name: "", gender: "", phoneNumber: "", email: "", job: "" },
     });
 
     const tableData = () => {
-      return allTableData.filter(
+      return state.allTableData.filter(
           (item, index) => index < state.page * state.limit && index >= state.limit * (state.page - 1)
       );
     };
+
+    const filteredData = computed(() => {
+      if (!state.searchQuery) {
+        return tableData();
+      }
+      return tableData().filter(item => {
+        return Object.values(item).some(val =>
+            String(val).toLowerCase().includes(state.searchQuery.toLowerCase())
+        );
+      });
+    });
 
     const handleCurrentChange = (e) => { state.page = e; };
     const handleSizeChange = (e) => { state.limit = e; };
@@ -101,66 +99,83 @@ export default defineComponent({
     };
 
     const saveEdit = () => {
-      const index = allTableData.findIndex(item => item.id === state.editForm.id);
+      const index = state.allTableData.findIndex(item => item.id === state.editForm.id);
       if (index !== -1) {
-        allTableData[index] = { date: allTableData[index].date, ...state.editForm };
+        state.allTableData[index] = { ...state.editForm };
         ElMessage.success('编辑成功');
-        console.log('Edited Row Data:', state.editForm); // 打印编辑的行数据
       }
       state.editDialogVisible = false;
     };
 
     const handleDelete = (index, row) => {
-      ElMessageBox.confirm('此操作将永久删除该记录, 是否继续?', '提示', {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
-        type: 'warning'
-      }).then(() => {
-        allTableData.splice(index, 1);
-        state.total = allTableData.length;
-        ElMessage.success('删除成功'+index);
-        deletePersonnel(index);
-        console.log('Updated Data:', allTableData); // 打印所有的数据
+      ElMessageBox.confirm('此操作将永久删除该记录, 是否继续?', '提示',
+          {
+            confirmButtonText: '确定',
+            cancelButtonText: '取消',
+            type: 'warning'
+          }
+      ).then(() => {
+        state.allTableData.splice(index, 1);
+        state.total = state.allTableData.length;
+        ElMessage.success('删除成功');
+        deletePersonnel(row.id);
       }).catch(() => {
         ElMessage.info('取消删除');
       });
     };
 
+    const deletePersonnel = (id) => {
+      axios.delete(`${import.meta.env.VITE_BASE_URL}/deletePersonnel/${id}`, {
+        headers: {
+          'token': getToken()
+        }
+      })
+          .then((response) => {
+            console.log(response.data);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+    };
+
+    const fetchPersonnelData = () => {
+      axios.get(`${import.meta.env.VITE_BASE_URL}/getAllPersonnelData`, {
+        headers: {
+          'token': getToken()
+        }
+      })
+          .then(response => {
+            const { data } = response.data;
+            state.allTableData = data.map(item => ({
+              id: item[0],
+              name: item[1],
+              gender: item[2],
+              email: item[3],
+              phoneNumber: item[4],
+              job: item[6],
+            }));
+            state.total = state.allTableData.length;
+          })
+          .catch(error => {
+            console.error('Failed to fetch personnel data:', error);
+          });
+    };
+
+    onMounted(() => {
+      fetchPersonnelData();
+    });
+
     return {
-      tableData,
+      ...toRefs(state),
+      filteredData,
       handleCurrentChange,
       handleSizeChange,
       handleEdit,
       saveEdit,
       handleDelete,
-      ...toRefs(state),
     };
   },
 });
-
-
-
-function deletePersonnel(id){
-  let config = {
-    method: 'delete',
-    maxBodyLength: Infinity,
-    url: `http://127.0.0.1:8080/api/v1/deletePersonnel/{id}`,
-    headers: {
-      'token': getToken,
-        ...data.getHeaders()
-    },
-    data : data
-  };
-
-  axios.request(config)
-      .then((response) => {
-        console.log(JSON.stringify(response.data));
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-
-}
 </script>
 
 <style scoped>
