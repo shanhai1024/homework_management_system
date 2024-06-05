@@ -4,13 +4,14 @@ package top.shanhai1024.controller;
 import cn.dev33.satoken.annotation.SaIgnore;
 import cn.dev33.satoken.util.SaResult;
 import lombok.AllArgsConstructor;
+import lombok.val;
 import org.springframework.web.bind.annotation.*;
 import top.shanhai1024.service.PersonnelService;
 
 import java.util.List;
 
 /**
- * @author null
+ * @author shanhai1024
  */
 @RestController
 @AllArgsConstructor
@@ -32,5 +33,10 @@ public class PersonnelController {
     public SaResult deleteById(@PathVariable  Long id){
         personnelService.deleteById(id);
         return SaResult.ok("删除成功");
+    }
+    @GetMapping("getAllPersonnelData")
+    public SaResult getAllData(){
+        val allData = personnelService.getAllData();
+        return SaResult.data(allData);
     }
 }

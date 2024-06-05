@@ -9,4 +9,5 @@ import java.util.List;
 public interface PersonnelService {
     List<Object[]> getPersonnelStatisticsData();
     void  deleteById(Long id);
+    List<Object> getAllData();
 }

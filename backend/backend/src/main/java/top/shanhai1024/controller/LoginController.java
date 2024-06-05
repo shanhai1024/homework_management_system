@@ -24,7 +24,7 @@ import java.util.Objects;
 
 /**
  * @author Shanhai1024
- * 用户登录及其权限处理接口
+ * 用户登录及其权限相关处理接口
  */
 @RestController
 @AllArgsConstructor

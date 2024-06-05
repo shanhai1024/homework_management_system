@@ -10,7 +10,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 /**
- * @author null
+ * @author shanhai1024
  * 获取短信验证码接口
  */
 

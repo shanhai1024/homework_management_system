@@ -2,15 +2,12 @@ package top.shanhai1024.entity.PO;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.ToString;
 
-/**
- * 人员实体类
- */
 @Entity
 @Data
 @Table(name = "personnel")
 public class Personnel {
-
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
@@ -36,5 +33,8 @@ public class Personnel {
 
   @ManyToOne(fetch = FetchType.EAGER)
   @JoinColumn(name = "class_id", insertable = false, updatable = false) // 注意这里要与 classId 对应
-  private aClass aClass;
+  @ToString.Exclude
+  private PersonnelClass personnelClass;
+
 }
+

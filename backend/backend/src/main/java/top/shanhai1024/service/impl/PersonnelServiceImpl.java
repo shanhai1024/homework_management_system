@@ -24,4 +24,9 @@ public class PersonnelServiceImpl implements PersonnelService {
         personnelRepository.deleteById(id);
 
     }
+
+    @Override
+    public List<Object> getAllData() {
+        return personnelRepository.getAllPersonnelData();
+    }
 }

@@ -5,7 +5,7 @@ import ua_parser.Client;
 import ua_parser.Parser;
 
 /**
- * @author null
+ * @author shanhai1024
  */
 @Component
 public class UserDeviceAialysis {
