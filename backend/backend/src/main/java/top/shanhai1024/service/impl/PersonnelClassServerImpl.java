@@ -35,25 +35,7 @@ public class PersonnelClassServerImpl implements PersonnelClassServer {
 @Override
 @Transactional
 public void updatePersonnelClasses(PersonnelClass personnelClass) {
-    PersonnelClass existingClass = personnelClassRepository.findById(personnelClass.getId())
-            .orElseThrow(() -> new EntityNotFoundException("PersonnelClass not found"));
-
-    // 初始化集合
-    existingClass.getPersonnel().size();
-
-    // 清空现有的 personnel 集合
-    existingClass.getPersonnel().clear();
-
-//    // 添加新的 personnel 元素
-//    existingClass.getPersonnel().addAll(personnelClass.getPersonnel());
-//
-//    // 设置双向关系 (如果需要)
-//    for (Personnel personnel : existingClass.getPersonnel()) {
-//        personnel.setPersonnelClass(existingClass);
-//    }
-
-    // 保存更新后的实体
-    personnelClassRepository.save(existingClass);
+    personnelClassRepository.updatePersonnelClasses(personnelClass.getId(),personnelClass.getName());
 }
 
 

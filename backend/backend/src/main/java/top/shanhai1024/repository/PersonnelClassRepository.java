@@ -30,4 +30,9 @@ public interface PersonnelClassRepository extends JpaRepository<PersonnelClass, 
     @Modifying
     @Query("update PersonnelClass p set p.id = ?1, p.name = ?2 where p.id is not null and p.name is not null")
     int updateIdAndNameByIdNotNullAndNameNotNull(@NonNull Integer id, @NonNull String name);
+
+    @Transactional
+    @Modifying
+    @Query(value = "UPDATE `personnel_managements`.`personnel_class` SET `class_name` = ?2 WHERE `id` = ?1",nativeQuery = true)
+    int updatePersonnelClasses(Integer id ,String name);
 }
