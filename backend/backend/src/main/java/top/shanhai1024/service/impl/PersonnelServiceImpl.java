@@ -3,6 +3,7 @@ package top.shanhai1024.service.impl;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import top.shanhai1024.entity.PO.Personnel;
 import top.shanhai1024.repository.PersonnelRepository;
 import top.shanhai1024.service.PersonnelService;
 
@@ -28,5 +29,10 @@ public class PersonnelServiceImpl implements PersonnelService {
     @Override
     public List<Object> getAllData() {
         return personnelRepository.getAllPersonnelData();
+    }
+
+    @Override
+    public void addPersonnel(Personnel personnel) {
+        personnelRepository.save(personnel);
     }
 }

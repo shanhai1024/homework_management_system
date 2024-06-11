@@ -9,5 +9,5 @@ public interface PersonnelClassServer {
     int deletePersonnelClassesById(Integer id);
     void updatePersonnelClasses(PersonnelClass personnelClass);
 
-    void addPersonnelClasses(PersonnelClass personnelClass);
+    PersonnelClass addPersonnelClasses(PersonnelClass personnelClass);
 }

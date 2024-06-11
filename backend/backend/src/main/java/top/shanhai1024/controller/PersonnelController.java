@@ -6,6 +6,7 @@ import cn.dev33.satoken.util.SaResult;
 import lombok.AllArgsConstructor;
 import lombok.val;
 import org.springframework.web.bind.annotation.*;
+import top.shanhai1024.entity.PO.Personnel;
 import top.shanhai1024.service.PersonnelService;
 
 import java.util.List;
@@ -34,6 +35,12 @@ public class PersonnelController {
         personnelService.deleteById(id);
         return SaResult.ok("删除成功");
     }
+    @PostMapping("addPersonnel")
+    public SaResult addPersonnel(@RequestBody Personnel personnel){
+        personnelService.addPersonnel(personnel);
+        return SaResult.ok();
+    }
+
     @GetMapping("getAllPersonnelData")
     public SaResult getAllData(){
         val allData = personnelService.getAllData();

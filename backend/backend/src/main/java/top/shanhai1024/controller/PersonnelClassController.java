@@ -4,6 +4,7 @@ import cn.dev33.satoken.annotation.SaIgnore;
 import cn.dev33.satoken.util.SaResult;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import lombok.val;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import top.shanhai1024.entity.PO.PersonnelClass;
@@ -32,8 +33,8 @@ public class PersonnelClassController {
     }
     @PostMapping()
     SaResult addPersonnelClasses(@RequestBody PersonnelClass personnelClass){
-        personnelClassServer.addPersonnelClasses(personnelClass);
-        return SaResult.ok();
+        val personnelClass1 = personnelClassServer.addPersonnelClasses(personnelClass);
+        return SaResult.data(personnelClass1);
     }
     @PutMapping()
     SaResult updatePersonnelClasses(@RequestBody PersonnelClass personnelClass){

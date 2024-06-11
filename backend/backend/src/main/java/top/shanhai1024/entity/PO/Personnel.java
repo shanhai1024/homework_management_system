@@ -32,7 +32,7 @@ public class Personnel {
   private Category category;
 
   @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "class_id", insertable = false, updatable = false) // 注意这里要与 classId 对应
+  @JoinColumn(name = "class_id", insertable = false, updatable = false)
   @ToString.Exclude
   private PersonnelClass personnelClass;
 

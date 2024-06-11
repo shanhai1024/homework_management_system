@@ -2,6 +2,7 @@ package top.shanhai1024.service.impl;
 
 import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
+import lombok.val;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import top.shanhai1024.entity.PO.Personnel;
@@ -39,8 +40,9 @@ public void updatePersonnelClasses(PersonnelClass personnelClass) {
 }
 
     @Override
-    public void addPersonnelClasses(PersonnelClass personnelClass) {
-        personnelClassRepository.save(personnelClass);
+    public PersonnelClass addPersonnelClasses(PersonnelClass personnelClass) {
+        PersonnelClass save = personnelClassRepository.save(personnelClass);
+        return save;
     }
 
 
