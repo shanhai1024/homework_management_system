@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router';
+import { createRouter, createWebHashHistory } from 'vue-router';
 import Login from '@/views/Login.vue';
 import Home from '@/views/HomeView.vue';
 import personnelInformation from '@/views/nestedPages/personnelInformation.vue';
@@ -23,13 +23,15 @@ const routes = [
       {
         path: '',
         name: 'home-default',
-        redirect: '/home/index'  // 设置默认子路由为 index
+        // 设置默认子路由为 index
+        redirect: '/home/index'
       },
       {
         path: '/home/index',
         name: 'index',
         components: {
-          default: homepageContent, // 使用 components 为 homepageContent 设置默认组件
+          // 使用 components 为 homepageContent 设置默认组件
+          default: homepageContent,
           content: homepageContent
         }
       },
@@ -54,7 +56,7 @@ const routes = [
 ];
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  history: createWebHashHistory("http://1.94.3.242:8080"),
   routes
 });
 

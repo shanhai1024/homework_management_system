@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="78eca49f-0d63-4799-a307-ee42a984470d" name="更改" comment="">
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/backend/src/main/java/top/shanhai1024/controller/PersonnelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/backend/src/main/java/top/shanhai1024/controller/PersonnelController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/backend/src/main/java/top/shanhai1024/repository/PersonnelRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/backend/src/main/java/top/shanhai1024/repository/PersonnelRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/backend/src/main/java/top/shanhai1024/service/PersonnelService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/backend/src/main/java/top/shanhai1024/service/PersonnelService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/backend/src/main/java/top/shanhai1024/service/impl/PersonnelServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/backend/src/main/java/top/shanhai1024/service/impl/PersonnelServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img_2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img_3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/vue-project/.env.development" beforeDir="false" afterPath="$PROJECT_DIR$/web/vue-project/.env.development" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/vue-project/.env.production" beforeDir="false" afterPath="$PROJECT_DIR$/web/vue-project/.env.production" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/vue-project/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/vue-project/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/web/vue-project/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/vue-project/src/components/careerManagement/careerManagementHome.vue" beforeDir="false" afterPath="$PROJECT_DIR$/web/vue-project/src/components/careerManagement/careerManagementHome.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/vue-project/src/components/myPageHader.vue" beforeDir="false" afterPath="$PROJECT_DIR$/web/vue-project/src/components/myPageHader.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/vue-project/src/components/personnelInformation/personnelInformationTable.vue" beforeDir="false" afterPath="$PROJECT_DIR$/web/vue-project/src/components/personnelInformation/personnelInformationTable.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/vue-project/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/vue-project/src/router/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/vue-project/src/views/Login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/web/vue-project/src/views/Login.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/vue-project/src/views/nestedPages/careerManagement.vue" beforeDir="false" afterPath="$PROJECT_DIR$/web/vue-project/src/views/nestedPages/careerManagement.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/vue-project/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/web/vue-project/yarn.lock" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CompilerWorkspaceConfiguration">
+    <option name="MAKE_PROJECT_ON_SAVE" value="true" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;shanhai1024&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="a65bd601-1ad7-4697-88fe-b94de3cb1b95" />
+        <option name="url" value="https://github.com/shanhai1024/homework_management_system.git" />
+      </UrlAndAccount>
+    </option>
+  </component>
+  <component name="JRebelWorkspace">
+    <option name="jrebelEnabledAutocompile" value="true" />
+  </component>
+  <component name="JpbToolWindowState">
+    <option name="isToolWindowVisible" value="false" />
+  </component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
+  <component name="ProjectId" id="2h1vF2ma3icZejTvSG3tjZLPe2U" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="abbreviatePackageNames" value="true" />
+    <option name="autoscrollToSource" value="true" />
+    <option name="showExcludedFiles" value="false" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showVisibilityIcons" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "JUnit.BackendApplicationTests.deleteById.executor": "Run",
+    "JUnit.BackendApplicationTests.getAll.executor": "Run",
+    "JUnit.BackendApplicationTests.getAllData.executor": "Run",
+    "JUnit.BackendApplicationTests.save.executor": "Run",
+    "Maven.enterprise1 [mvn,package,-DskipTests].executor": "Run",
+    "Maven.enterprise1 [package,-DskipTests].executor": "Run",
+    "Maven.enterprise1 [package].executor": "Run",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "Spring Boot.BackendApplication.executor": "Run",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/null/Mycode/myVerb/people_management",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "npm.build:prod.executor": "Run",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "com.zeroturnaround.javarebel.idea.plugin.settings.startup.StartupConfigurable",
+    "ts.external.directory.path": "/Users/null/Applications/IntelliJ IDEA Ultimate.app/Contents/plugins/javascript-impl/jsLanguageServicesImpl/external",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="ReactorSettings">
+    <option name="notificationShown" value="true" />
+  </component>
+  <component name="RebelAgentSelection">
+    <selection>jxr</selection>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="mvn mvn package -DskipTests " />
+      <command value="mvn package -DskipTests " />
+    </option>
+  </component>
+  <component name="RunManager" selected="Spring Boot.BackendApplication">
+    <configuration name="V1__create_Initialization_data.sql" type="DatabaseScript" editBeforeRun="true" temporary="true" nameIsGenerated="true">
+      <script-file value="$PROJECT_DIR$/backend/backend/src/main/resources/db/migration/V1__create_Initialization_data.sql" />
+      <script-mode>FILE</script-mode>
+      <method v="2" />
+    </configuration>
+    <configuration name="BackendApplicationTests.deleteById" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="enterprise1" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="top.shanhai1024.backend.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="top.shanhai1024.backend" />
+      <option name="MAIN_CLASS_NAME" value="top.shanhai1024.backend.BackendApplicationTests" />
+      <option name="METHOD_NAME" value="deleteById" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BackendApplicationTests.getAllData" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="enterprise1" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="top.shanhai1024.backend.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="top.shanhai1024.backend" />
+      <option name="MAIN_CLASS_NAME" value="top.shanhai1024.backend.BackendApplicationTests" />
+      <option name="METHOD_NAME" value="getAllData" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BackendApplicationTests.save" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="enterprise1" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="top.shanhai1024.backend.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="top.shanhai1024.backend" />
+      <option name="MAIN_CLASS_NAME" value="top.shanhai1024.backend.BackendApplicationTests" />
+      <option name="METHOD_NAME" value="save" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BackendApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="enterprise1" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="top.shanhai1024.BackendApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="build:prod" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/web/vue-project/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="build:prod" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.build:prod" />
+        <item itemvalue="JUnit.BackendApplicationTests.save" />
+        <item itemvalue="JUnit.BackendApplicationTests.deleteById" />
+        <item itemvalue="JUnit.BackendApplicationTests.getAllData" />
+        <item itemvalue="Database Script.V1__create_Initialization_data.sql" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="默认任务">
+      <changelist id="78eca49f-0d63-4799-a307-ee42a984470d" name="更改" comment="" />
+      <created>1716774291640</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1716774291640</updated>
+      <workItem from="1716774293736" duration="149000" />
+      <workItem from="1716774461683" duration="5000" />
+      <workItem from="1716897986596" duration="2516000" />
+      <workItem from="1716910637486" duration="3212000" />
+      <workItem from="1716948965087" duration="4535000" />
+      <workItem from="1717068103977" duration="7177000" />
+      <workItem from="1717319612896" duration="20150000" />
+      <workItem from="1717567024025" duration="776000" />
+      <workItem from="1717587677376" duration="9909000" />
+      <workItem from="1717633602758" duration="415000" />
+      <workItem from="1717639314988" duration="638000" />
+      <workItem from="1717674827373" duration="640000" />
+      <workItem from="1717945780972" duration="4112000" />
+      <workItem from="1718033667893" duration="242000" />
+      <workItem from="1718072558745" duration="4195000" />
+      <workItem from="1718086848076" duration="11280000" />
+      <workItem from="1718113472456" duration="3641000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="HEAD" />
+                </option>
+              </RecentGroup>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="CUSTOM_BOOLEAN_PROPERTIES">
+                <map>
+                  <entry key="Show.Git.Branches" value="false" />
+                </map>
+              </option>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="HEAD" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>

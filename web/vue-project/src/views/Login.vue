@@ -21,7 +21,7 @@
           </label>
           <label>
             <input type="text" v-model="loginSMSCode" class="getSMSInput" placeholder="验证码"/>
-            <button type="button" @click="getSMSCode(true)" class="getSMSButton">获取您的验证码</button>
+            <button type="button" @click="getSMSCode(true)" class="getSMSButton">获取验证码</button>
           </label>
           <label>
             <input type="password" v-model="loginPassword" placeholder="您的密码"/>
@@ -39,7 +39,7 @@
           </label>
           <label>
             <input type="text" v-model="registerSMSCode" class="getSMSInput" placeholder="验证码"/>
-            <button type="button" @click="getSMSCode(false)" class="getSMSButton">获取您的验证码</button>
+            <button type="button" @click="getSMSCode(false)" class="getSMSButton">获取验证码</button>
           </label>
           <label>
             <input type="password" v-model="registerPassword" placeholder="您的密码"/>
@@ -281,13 +281,15 @@ form svg {
   width: 44px;
 }
 .getSMSInput {
-  width: 60%;
+  width: 57%;
   border-radius: 25px 0 0 25px;
 }
 .getSMSButton {
+  width: 23%;
+  height: 38px;
   color: white;
   border-radius: 0 25px 25px 0;
-  border: 2px solid white;
+  border: 0px solid white;
   cursor: pointer;
   transition: background-color 0.3s, color 0.3s;
   margin-top: 20px;

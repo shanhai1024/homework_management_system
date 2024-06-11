@@ -2,7 +2,7 @@
   <el-container>
     <el-header id="elHeader">
       <el-row>
-        <el-col :span="18">
+        <el-col :span="20">
           <el-breadcrumb separator="/">
             <el-breadcrumb-item>
               <a href="/home">promotion management</a>
@@ -12,8 +12,8 @@
           </el-breadcrumb>
         </el-col>
         <el-col :span="4" class="page-right">
-          <el-avatar src="http://shanhai10241.test.upcdn.net/null/defoutAvatar.jpeg"></el-avatar>
-          <el-badge class="item">
+          <el-avatar id="headerAvatar" src="http://shanhai10241.test.upcdn.net/null/defoutAvatar.jpeg"></el-avatar>
+          <el-badge class="item" id="headerMsg">
             <el-icon>
               <BellFilled/>
             </el-icon>
@@ -60,10 +60,10 @@ export default {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  margin-left: 90px;
 }
 
-.item {
-  margin-left: 20px;
+#headerMsg,#loginOut{
+  padding-left: 20px;
 }
+
 </style>
