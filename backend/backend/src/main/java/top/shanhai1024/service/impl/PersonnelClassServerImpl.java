@@ -38,5 +38,10 @@ public void updatePersonnelClasses(PersonnelClass personnelClass) {
     personnelClassRepository.updatePersonnelClasses(personnelClass.getId(),personnelClass.getName());
 }
 
+    @Override
+    public void addPersonnelClasses(PersonnelClass personnelClass) {
+        personnelClassRepository.save(personnelClass);
+    }
+
 
 }

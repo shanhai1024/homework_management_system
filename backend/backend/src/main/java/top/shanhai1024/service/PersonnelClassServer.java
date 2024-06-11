@@ -8,4 +8,6 @@ public interface PersonnelClassServer {
     List<PersonnelClass> getAllClass();
     int deletePersonnelClassesById(Integer id);
     void updatePersonnelClasses(PersonnelClass personnelClass);
+
+    void addPersonnelClasses(PersonnelClass personnelClass);
 }

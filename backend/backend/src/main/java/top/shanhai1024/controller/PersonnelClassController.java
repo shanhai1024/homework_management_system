@@ -30,6 +30,11 @@ public class PersonnelClassController {
         personnelClassServer.deletePersonnelClassesById(id);
         return SaResult.ok();
     }
+    @PostMapping()
+    SaResult addPersonnelClasses(@RequestBody PersonnelClass personnelClass){
+        personnelClassServer.addPersonnelClasses(personnelClass);
+        return SaResult.ok();
+    }
     @PutMapping()
     SaResult updatePersonnelClasses(@RequestBody PersonnelClass personnelClass){
         personnelClassServer.updatePersonnelClasses(personnelClass);
