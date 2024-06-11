@@ -1,99 +1,9 @@
-<template>
-  <div class="home">
-    <!-- 搜索输入框 -->
-    <el-row :gutter="20">
-      <el-col :span="15">
-        <el-input v-model="searchQuery" placeholder="输入名字搜索" style="margin-bottom: 20px; width: 50%;"></el-input>
-      </el-col>
-      <el-col :span="6" style="display: flex; justify-content: flex-end;">
-        <el-button type="primary" :icon="Plus" circle @click="showAddDialog" />
-      </el-col>
-    </el-row>
-
-    <el-table v-loading="loading" :data="filteredData" style="width: 100%">
-      <el-table-column prop="id" label="ID" />
-      <el-table-column prop="name" label="名字" />
-      <el-table-column prop="gender" label="性别" />
-      <el-table-column prop="phoneNumber" label="电话" />
-      <el-table-column prop="email" label="邮箱" />
-      <el-table-column prop="job" label="职业" />
-      <el-table-column prop="category" label="分类" />
-      <el-table-column label="操作">
-        <template #default="scope">
-          <el-button @click="handleEdit(scope.$index, scope.row)" type="primary" :icon="Edit" circle />
-          <el-button @click="handleDelete(scope.$index, scope.row)" type="danger" :icon="Delete" circle />
-        </template>
-      </el-table-column>
-    </el-table>
-    <div class="example-pagination-block">
-      <el-pagination
-          background
-          layout="prev, pager, next, total, sizes"
-          :total="total"
-          :page-size="limit"
-          @current-change="handleCurrentChange"
-          @size-change="handleSizeChange"
-      />
-    </div>
-
-    <!-- 编辑对话框 -->
-    <el-dialog v-model="editDialogVisible" title="编辑信息">
-      <el-form :model="editForm">
-        <el-form-item label="名字">
-          <el-input v-model="editForm.name"></el-input>
-        </el-form-item>
-        <el-form-item label="性别">
-          <el-input v-model="editForm.gender"></el-input>
-        </el-form-item>
-        <el-form-item label="电话">
-          <el-input v-model="editForm.phoneNumber"></el-input>
-        </el-form-item>
-        <el-form-item label="邮箱">
-          <el-input v-model="editForm.email"></el-input>
-        </el-form-item>
-        <el-form-item label="职业">
-          <el-input v-model="editForm.job"></el-input>
-        </el-form-item>
-      </el-form>
-      <div slot="footer" class="dialog-footer">
-        <el-button @click="editDialogVisible = false">取消</el-button>
-        <el-button type="primary" @click="saveEdit">保存</el-button>
-      </div>
-    </el-dialog>
-
-    <!-- 添加对话框 -->
-    <el-dialog v-model="addDialogVisible" title="添加用户">
-      <el-form :model="addForm">
-        <el-form-item label="名字">
-          <el-input v-model="addForm.name"></el-input>
-        </el-form-item>
-        <el-form-item label="性别">
-          <el-input v-model="addForm.gender"></el-input>
-        </el-form-item>
-        <el-form-item label="电话">
-          <el-input v-model="addForm.phoneNumber"></el-input>
-        </el-form-item>
-        <el-form-item label="邮箱">
-          <el-input v-model="addForm.email"></el-input>
-        </el-form-item>
-        <el-form-item label="职业">
-          <el-input v-model="addForm.job"></el-input>
-        </el-form-item>
-      </el-form>
-      <div slot="footer" class="dialog-footer">
-        <el-button @click="addDialogVisible = false">取消</el-button>
-        <el-button type="primary" @click="saveAdd">添加</el-button>
-      </div>
-    </el-dialog>
-  </div>
-</template>
-
-<script>
+<script >
+import { Delete, Edit, Plus } from "@element-plus/icons-vue"
 import { defineComponent, reactive, toRefs, onMounted, computed } from "vue";
 import { ElMessageBox, ElMessage } from "element-plus";
 import axios from "axios";
 import { getToken } from "@/stores/auth.js";
-import { Delete, Edit, Plus } from "@element-plus/icons-vue";
 
 export default defineComponent({
   name: "PersonnelInformationTable",
@@ -284,6 +194,99 @@ export default defineComponent({
   },
 });
 </script>
+
+<template>
+  <div class="home">
+    <!-- 搜索输入框 -->
+    <el-row :gutter="20">
+      <el-col :span="15">
+
+        <el-input v-model="searchQuery" placeholder="输入名字搜索" style="margin-bottom: 20px; width: 50%;"></el-input>
+      </el-col>
+      <el-col :span="6" style="display: flex; justify-content: flex-end;">
+        <el-button type="primary" icon="Plus" circle @click="showAddDialog" />
+
+      </el-col>
+    </el-row>
+
+    <el-table v-loading="loading" :data="filteredData" style="width: 100%">
+      <el-table-column prop="id" label="ID" />
+      <el-table-column prop="name" label="名字" />
+      <el-table-column prop="gender" label="性别" />
+      <el-table-column prop="phoneNumber" label="电话" />
+      <el-table-column prop="email" label="邮箱" />
+      <el-table-column prop="job" label="职业" />
+      <el-table-column prop="category" label="分类" />
+      <el-table-column label="操作">
+        <template #default="scope">
+          <el-button @click="handleEdit(scope.$index, scope.row)" type="primary" icon="Edit" circle />
+          <el-button @click="handleDelete(scope.$index, scope.row)" type="danger" icon="Delete" circle />
+        </template>
+      </el-table-column>
+    </el-table>
+    <div class="example-pagination-block">
+      <el-pagination
+          background
+          layout="prev, pager, next, total, sizes"
+          :total="total"
+          :page-size="limit"
+          @current-change="handleCurrentChange"
+          @size-change="handleSizeChange"
+      />
+    </div>
+
+    <!-- 编辑对话框 -->
+    <el-dialog v-model="editDialogVisible" title="编辑信息">
+      <el-form :model="editForm">
+        <el-form-item label="名字">
+          <el-input v-model="editForm.name"></el-input>
+        </el-form-item>
+        <el-form-item label="性别">
+          <el-input v-model="editForm.gender"></el-input>
+        </el-form-item>
+        <el-form-item label="电话">
+          <el-input v-model="editForm.phoneNumber"></el-input>
+        </el-form-item>
+        <el-form-item label="邮箱">
+          <el-input v-model="editForm.email"></el-input>
+        </el-form-item>
+        <el-form-item label="职业">
+          <el-input v-model="editForm.job"></el-input>
+        </el-form-item>
+      </el-form>
+      <div slot="footer" class="dialog-footer">
+        <el-button @click="editDialogVisible = false">取消</el-button>
+        <el-button type="primary" @click="saveEdit">保存</el-button>
+      </div>
+    </el-dialog>
+
+    <!-- 添加对话框 -->
+    <el-dialog v-model="addDialogVisible" title="添加用户">
+      <el-form :model="addForm">
+        <el-form-item label="名字">
+          <el-input v-model="addForm.name"></el-input>
+        </el-form-item>
+        <el-form-item label="性别">
+          <el-input v-model="addForm.gender"></el-input>
+        </el-form-item>
+        <el-form-item label="电话">
+          <el-input v-model="addForm.phoneNumber"></el-input>
+        </el-form-item>
+        <el-form-item label="邮箱">
+          <el-input v-model="addForm.email"></el-input>
+        </el-form-item>
+        <el-form-item label="职业">
+          <el-input v-model="addForm.job"></el-input>
+        </el-form-item>
+      </el-form>
+      <div slot="footer" class="dialog-footer">
+        <el-button @click="addDialogVisible = false">取消</el-button>
+        <el-button type="primary" @click="saveAdd">添加</el-button>
+      </div>
+    </el-dialog>
+  </div>
+</template>
+
 
 <style scoped>
 .home {
