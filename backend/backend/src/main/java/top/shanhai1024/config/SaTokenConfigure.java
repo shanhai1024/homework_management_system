@@ -11,6 +11,7 @@ import cn.dev33.satoken.stp.StpLogic;
 import cn.dev33.satoken.stp.StpUtil;
 import cn.dev33.satoken.util.SaResult;
 import com.UpYun;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -22,6 +23,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  * 打开注解式鉴权功能
  */
 @Configuration
+@Slf4j
 public class SaTokenConfigure implements WebMvcConfigurer {
 
     @Value("${upyun.serviceName}")
@@ -40,7 +42,7 @@ public class SaTokenConfigure implements WebMvcConfigurer {
         registry.addInterceptor(new SaInterceptor(handle -> StpUtil.checkLogin()))
                 .addPathPatterns("/**")
                 .excludePathPatterns("/login","/oauth2/*","/register","/oauth2/userinfo","/images/*","/api/v1/getSMSCode/*");
-        System.out.println("拦截注册成功");
+        log.debug("拦截注册成功");
     }
 
     @Bean
@@ -89,7 +91,7 @@ public class SaTokenConfigure implements WebMvcConfigurer {
 
                     // 如果是预检请求，则立即返回到前端
                     SaRouter.match(SaHttpMethod.OPTIONS)
-                            .free(r -> System.out.println("--------OPTIONS预检请求，不做处理"))
+                            .free(r -> log.debug("--------OPTIONS预检请求，不做处理"))
                             .back();
                 })
                 ;

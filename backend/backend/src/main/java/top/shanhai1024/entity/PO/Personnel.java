@@ -3,6 +3,9 @@ package top.shanhai1024.entity.PO;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.ToString;
+import top.shanhai1024.entity.PO.Category;
+import top.shanhai1024.entity.PO.PersonnelClass;
+import top.shanhai1024.entity.PO.StudentClass;
 
 @Entity
 @Data
@@ -31,10 +34,14 @@ public class Personnel {
   @JoinColumn(name = "categories_id")
   private Category category;
 
+  // 映射到 personnel 表中的 student_class_id 字段
+  @ManyToOne(fetch = FetchType.EAGER)
+  @JoinColumn(name = "student_class_id")  // 修正此处的 JoinColumn 映射
+  private StudentClass studentClass;
+
   @ManyToOne(fetch = FetchType.EAGER)
   @JoinColumn(name = "class_id", insertable = false, updatable = false)
   @ToString.Exclude
   private PersonnelClass personnelClass;
 
 }
-

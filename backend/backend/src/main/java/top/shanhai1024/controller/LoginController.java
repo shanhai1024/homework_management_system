@@ -70,11 +70,6 @@ public class LoginController {
     return userRegisterServer.register(registerUser);
 
 }
-
-
-
-
-
     //    用户退出
     @RequestMapping("logout")
     public SaResult logout(@RequestParam(name = "logoutDriverEquipment",required = false,defaultValue = "")String  logoutDriverEquipment) {

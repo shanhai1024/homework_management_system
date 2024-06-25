@@ -5,21 +5,19 @@ import MyPageHeader from "@/components/myPageHader.vue";
 
 <template>
   <div id="MyIndexHome">
-    <!--  菜单-->
-
+    <!-- 菜单 -->
     <div id="myMenu">
       <MyMenu></MyMenu>
     </div>
 
-    <!--  主页-->
+    <!-- 主页 -->
     <div id="HomePage">
-      <!--    页头-->
-
+      <!-- 页头 -->
       <el-affix :offset="1">
         <MyPageHeader id="indexPageHeader"></MyPageHeader>
       </el-affix>
-      <!--    主页面内容-->
-      <router-view name="content"></router-view>
+      <!-- 主页面内容 -->
+      <router-view></router-view>
     </div>
   </div>
 </template>
@@ -33,23 +31,21 @@ import MyPageHeader from "@/components/myPageHader.vue";
   position: sticky;
   left: 0;
 }
-el-affix{
+el-affix {
   width: 100%;
 }
 #HomePage {
   overflow: auto;
   width: 100%;
   height: 100vh;
-
   margin-left: 20px;
-
 }
-#MyIndexHome{
+#MyIndexHome {
   width: 100%;
 }
-my-page-header{
+my-page-header {
   width: 100%;
-  top:30px;
-  right:5px;
+  top: 30px;
+  right: 5px;
 }
 </style>

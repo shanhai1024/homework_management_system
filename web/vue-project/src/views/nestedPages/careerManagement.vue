@@ -1,6 +1,6 @@
 <script>
 // 职业管理
-import CareerManagementHome from "@/components/careerManagement/careerManagementHome.vue";
+import CareerManagementHome from "@/views/occupationManagementPage/careerManagementHome.vue";
 
 export default {
   name: "careerManagement",

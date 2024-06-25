@@ -5,26 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="78eca49f-0d63-4799-a307-ee42a984470d" name="更改" comment="">
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/backend/src/main/java/top/shanhai1024/controller/PersonnelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/backend/src/main/java/top/shanhai1024/controller/PersonnelController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/backend/src/main/java/top/shanhai1024/repository/PersonnelRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/backend/src/main/java/top/shanhai1024/repository/PersonnelRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/backend/src/main/java/top/shanhai1024/service/PersonnelService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/backend/src/main/java/top/shanhai1024/service/PersonnelService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/backend/src/main/java/top/shanhai1024/service/impl/PersonnelServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/backend/src/main/java/top/shanhai1024/service/impl/PersonnelServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/img.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img_1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img_3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/vue-project/.env.development" beforeDir="false" afterPath="$PROJECT_DIR$/web/vue-project/.env.development" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/vue-project/.env.production" beforeDir="false" afterPath="$PROJECT_DIR$/web/vue-project/.env.production" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/vue-project/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/vue-project/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/web/vue-project/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/vue-project/src/components/careerManagement/careerManagementHome.vue" beforeDir="false" afterPath="$PROJECT_DIR$/web/vue-project/src/components/careerManagement/careerManagementHome.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/vue-project/src/components/myPageHader.vue" beforeDir="false" afterPath="$PROJECT_DIR$/web/vue-project/src/components/myPageHader.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/vue-project/src/components/personnelInformation/personnelInformationTable.vue" beforeDir="false" afterPath="$PROJECT_DIR$/web/vue-project/src/components/personnelInformation/personnelInformationTable.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/vue-project/src/components/studentManagementPage/studentClassManagement.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/vue-project/src/components/studentManagementPage/studentInformationManagement.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/vue-project/src/components/studentManagementPage/studentManagement.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/backend/src/main/java/top/shanhai1024/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/backend/src/main/java/top/shanhai1024/controller/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/vue-project/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/vue-project/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/vue-project/src/components/myMenu.vue" beforeDir="false" afterPath="$PROJECT_DIR$/web/vue-project/src/components/myMenu.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/vue-project/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/vue-project/src/router/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/vue-project/src/views/Login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/web/vue-project/src/views/Login.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/vue-project/src/views/nestedPages/careerManagement.vue" beforeDir="false" afterPath="$PROJECT_DIR$/web/vue-project/src/views/nestedPages/careerManagement.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/vue-project/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/web/vue-project/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/vue-project/src/views/HomeView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/web/vue-project/src/views/HomeView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/打包后的文件/dist/assets/index-BLShOmeP.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/打包后的文件/dist/assets/index-CprdOLeB.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/打包后的文件/dist/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/打包后的文件/dist/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/打包后的文件/enterprise1-0.0.1-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/打包后的文件/enterprise1-0.0.1-SNAPSHOT.jar" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,37 +79,37 @@
     <option name="showLibraryContents" value="true" />
     <option name="showVisibilityIcons" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "JUnit.BackendApplicationTests.deleteById.executor": "Run",
-    "JUnit.BackendApplicationTests.getAll.executor": "Run",
-    "JUnit.BackendApplicationTests.getAllData.executor": "Run",
-    "JUnit.BackendApplicationTests.save.executor": "Run",
-    "Maven.enterprise1 [mvn,package,-DskipTests].executor": "Run",
-    "Maven.enterprise1 [package,-DskipTests].executor": "Run",
-    "Maven.enterprise1 [package].executor": "Run",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "Spring Boot.BackendApplication.executor": "Run",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/null/Mycode/myVerb/people_management",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "npm.build:prod.executor": "Run",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "com.zeroturnaround.javarebel.idea.plugin.settings.startup.StartupConfigurable",
-    "ts.external.directory.path": "/Users/null/Applications/IntelliJ IDEA Ultimate.app/Contents/plugins/javascript-impl/jsLanguageServicesImpl/external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;JUnit.BackendApplicationTests.deleteById.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.BackendApplicationTests.getAll.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.BackendApplicationTests.getAllData.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.BackendApplicationTests.save.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.enterprise1 [mvn,package,-DskipTests].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.enterprise1 [package,-DskipTests].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.enterprise1 [package].executor&quot;: &quot;Run&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;Spring Boot.BackendApplication.executor&quot;: &quot;Run&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/null/Mycode/myVerb/people_management&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;npm.build:prod.executor&quot;: &quot;Run&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.zeroturnaround.javarebel.idea.plugin.settings.startup.StartupConfigurable&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Users/null/Applications/IntelliJ IDEA Ultimate.app/Contents/plugins/javascript-impl/jsLanguageServicesImpl/external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
   </component>
@@ -234,7 +227,10 @@
       <workItem from="1718033667893" duration="242000" />
       <workItem from="1718072558745" duration="4195000" />
       <workItem from="1718086848076" duration="11280000" />
-      <workItem from="1718113472456" duration="3641000" />
+      <workItem from="1718113472456" duration="6859000" />
+      <workItem from="1718761874813" duration="1567000" />
+      <workItem from="1718797041196" duration="306000" />
+      <workItem from="1718870054378" duration="2348000" />
     </task>
     <servers />
   </component>

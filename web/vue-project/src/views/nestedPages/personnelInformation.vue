@@ -1,5 +1,5 @@
 <script>
-import PersonnelInformationTable from "@/components/personnelInformation/personnelInformationTable.vue";
+import PersonnelInformationTable from "@/views/personnelInformation/personnelInformationTable.vue";
 export default {
   name: "personnelInformation",
   components: {PersonnelInformationTable}

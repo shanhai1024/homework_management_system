@@ -1,6 +1,6 @@
 <!--人员信息-->
 <script>
-import MyContent from "@/components/HomeContent/myContent.vue";
+import MyContent from "@/views/HomeContent/myContent.vue";
 
 export default {
   name: "homepage",
