@@ -1,46 +1,40 @@
 package top.shanhai1024.entity.PO;
 
-
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.proxy.HibernateProxy;
 
-import java.util.List;
 import java.util.Objects;
 
-
 /**
- * 学生班级
+ * 学生信息管理
  */
 @Entity
 @Getter
 @Setter
 @RequiredArgsConstructor
-@Table(name = "student_classes")
-public class StudentClass {
+@Table(name = "students")
+public class Student {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "class_name", nullable = false)
-    private String className;
+    @Column(name = "name", nullable = false)
+    private String name;
+
+    @Column(name = "age")
+    private int age;
+
+    @Column(name = "gender")
+    private String gender;
 
     @ManyToOne
-    @JoinColumn(name = "teacher_id")
-    private Teacher teacher;
+    @JoinColumn(name = "class_id")
+    private StudentClass studentClass;
 
-    @ManyToOne
-    @JoinColumn(name = "department_id")
-    private Department department;
-
-    @OneToMany(mappedBy = "studentClass")
-    @ToString.Exclude
-    private List<Student> students;
-
-    @OneToMany(mappedBy = "studentClass")
-    @ToString.Exclude
-    private List<TeacherClass> teacherClasses;
+    @Column(name = "contact_info")
+    private String contactInfo;
 
     @Override
     public final boolean equals(Object o) {
@@ -49,15 +43,18 @@ public class StudentClass {
         Class<?> oEffectiveClass = o instanceof HibernateProxy ? ((HibernateProxy) o).getHibernateLazyInitializer().getPersistentClass() : o.getClass();
         Class<?> thisEffectiveClass = this instanceof HibernateProxy ? ((HibernateProxy) this).getHibernateLazyInitializer().getPersistentClass() : this.getClass();
         if (thisEffectiveClass != oEffectiveClass) return false;
-        StudentClass that = (StudentClass) o;
-        return getId() != null && Objects.equals(getId(), that.getId());
+        Student student = (Student) o;
+        return getId() != null && Objects.equals(getId(), student.getId());
     }
 
     @Override
     public String toString() {
-        return "StudentClass{" +
+        return "Student{" +
                 "id=" + id +
-                ", className='" + className + '\'' +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                ", gender='" + gender + '\'' +
+                ", contactInfo='" + contactInfo + '\'' +
                 '}';
     }
 

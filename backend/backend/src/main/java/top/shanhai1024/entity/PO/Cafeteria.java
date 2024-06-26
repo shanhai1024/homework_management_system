@@ -1,46 +1,34 @@
 package top.shanhai1024.entity.PO;
 
-
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.proxy.HibernateProxy;
 
-import java.util.List;
 import java.util.Objects;
 
-
 /**
- * 学生班级
+ * 开设食堂管理
  */
 @Entity
 @Getter
 @Setter
 @RequiredArgsConstructor
-@Table(name = "student_classes")
-public class StudentClass {
+@Table(name = "cafeterias")
+public class Cafeteria {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "class_name", nullable = false)
-    private String className;
+    @Column(name = "name", nullable = false)
+    private String name;
+
+    @Column(name = "location", nullable = false)
+    private String location;
 
     @ManyToOne
-    @JoinColumn(name = "teacher_id")
-    private Teacher teacher;
-
-    @ManyToOne
-    @JoinColumn(name = "department_id")
-    private Department department;
-
-    @OneToMany(mappedBy = "studentClass")
-    @ToString.Exclude
-    private List<Student> students;
-
-    @OneToMany(mappedBy = "studentClass")
-    @ToString.Exclude
-    private List<TeacherClass> teacherClasses;
+    @JoinColumn(name = "manager_id")
+    private CafeteriaStaff manager;
 
     @Override
     public final boolean equals(Object o) {
@@ -49,15 +37,15 @@ public class StudentClass {
         Class<?> oEffectiveClass = o instanceof HibernateProxy ? ((HibernateProxy) o).getHibernateLazyInitializer().getPersistentClass() : o.getClass();
         Class<?> thisEffectiveClass = this instanceof HibernateProxy ? ((HibernateProxy) this).getHibernateLazyInitializer().getPersistentClass() : this.getClass();
         if (thisEffectiveClass != oEffectiveClass) return false;
-        StudentClass that = (StudentClass) o;
-        return getId() != null && Objects.equals(getId(), that.getId());
+        Cafeteria cafeteria = (Cafeteria) o;
+        return getId() != null && Objects.equals(getId(), cafeteria.getId());
     }
 
     @Override
     public String toString() {
-        return "StudentClass{" +
+        return "Cafeteria{" +
                 "id=" + id +
-                ", className='" + className + '\'' +
+                ", name='" + name + '\'' +
                 '}';
     }
 

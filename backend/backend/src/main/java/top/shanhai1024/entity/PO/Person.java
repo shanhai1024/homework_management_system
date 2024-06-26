@@ -1,46 +1,47 @@
 package top.shanhai1024.entity.PO;
 
-
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.proxy.HibernateProxy;
 
-import java.util.List;
 import java.util.Objects;
 
 
 /**
- * 学生班级
+ * 所有人员
  */
 @Entity
 @Getter
 @Setter
 @RequiredArgsConstructor
-@Table(name = "student_classes")
-public class StudentClass {
+@Table(name = "persons")
+public class Person {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "class_name", nullable = false)
-    private String className;
+    @Column(name = "name", nullable = false)
+    private String name;
 
-    @ManyToOne
-    @JoinColumn(name = "teacher_id")
-    private Teacher teacher;
+    @Column(name = "role", nullable = false)
+    private String role;
 
     @ManyToOne
     @JoinColumn(name = "department_id")
     private Department department;
 
-    @OneToMany(mappedBy = "studentClass")
-    @ToString.Exclude
-    private List<Student> students;
+    @Column(name = "contact_info")
+    private String contactInfo;
 
-    @OneToMany(mappedBy = "studentClass")
-    @ToString.Exclude
-    private List<TeacherClass> teacherClasses;
+    @Override
+    public String toString() {
+        return "Person{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", role='" + role + '\'' +
+                '}';
+    }
 
     @Override
     public final boolean equals(Object o) {
@@ -49,16 +50,8 @@ public class StudentClass {
         Class<?> oEffectiveClass = o instanceof HibernateProxy ? ((HibernateProxy) o).getHibernateLazyInitializer().getPersistentClass() : o.getClass();
         Class<?> thisEffectiveClass = this instanceof HibernateProxy ? ((HibernateProxy) this).getHibernateLazyInitializer().getPersistentClass() : this.getClass();
         if (thisEffectiveClass != oEffectiveClass) return false;
-        StudentClass that = (StudentClass) o;
-        return getId() != null && Objects.equals(getId(), that.getId());
-    }
-
-    @Override
-    public String toString() {
-        return "StudentClass{" +
-                "id=" + id +
-                ", className='" + className + '\'' +
-                '}';
+        Person person = (Person) o;
+        return getId() != null && Objects.equals(getId(), person.getId());
     }
 
     @Override

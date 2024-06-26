@@ -48,4 +48,7 @@ my-page-header {
   top: 30px;
   right: 5px;
 }
+my-menu{
+  overflow: auto;
+}
 </style>

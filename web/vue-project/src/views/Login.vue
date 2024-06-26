@@ -107,7 +107,7 @@ const login = () => {
             message: '登录成功',
             type: 'success'
           });
-          router.push('/home');
+          router.push('/home/index');
         } else {
           ElMessage({
             message: response.data.msg,

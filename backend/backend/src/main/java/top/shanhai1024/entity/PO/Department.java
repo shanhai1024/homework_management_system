@@ -1,5 +1,7 @@
 package top.shanhai1024.entity.PO;
-
+/*
+系部信息
+ */
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -8,39 +10,32 @@ import org.hibernate.proxy.HibernateProxy;
 import java.util.List;
 import java.util.Objects;
 
-
-/**
- * 学生班级
- */
 @Entity
 @Getter
 @Setter
+
 @RequiredArgsConstructor
-@Table(name = "student_classes")
-public class StudentClass {
+@Table(name = "departments")
+public class Department {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "class_name", nullable = false)
-    private String className;
+    @Column(name = "department_name", nullable = false)
+    private String departmentName;
 
     @ManyToOne
-    @JoinColumn(name = "teacher_id")
-    private Teacher teacher;
+    @JoinColumn(name = "head_of_department")
+    private Teacher headOfDepartment;
 
-    @ManyToOne
-    @JoinColumn(name = "department_id")
-    private Department department;
-
-    @OneToMany(mappedBy = "studentClass")
+    @OneToMany(mappedBy = "department")
     @ToString.Exclude
-    private List<Student> students;
+    private List<Person> persons;
 
-    @OneToMany(mappedBy = "studentClass")
+    @OneToMany(mappedBy = "department")
     @ToString.Exclude
-    private List<TeacherClass> teacherClasses;
+    private List<StudentClass> studentClasses;
 
     @Override
     public final boolean equals(Object o) {
@@ -49,20 +44,22 @@ public class StudentClass {
         Class<?> oEffectiveClass = o instanceof HibernateProxy ? ((HibernateProxy) o).getHibernateLazyInitializer().getPersistentClass() : o.getClass();
         Class<?> thisEffectiveClass = this instanceof HibernateProxy ? ((HibernateProxy) this).getHibernateLazyInitializer().getPersistentClass() : this.getClass();
         if (thisEffectiveClass != oEffectiveClass) return false;
-        StudentClass that = (StudentClass) o;
+        Department that = (Department) o;
         return getId() != null && Objects.equals(getId(), that.getId());
     }
 
-    @Override
-    public String toString() {
-        return "StudentClass{" +
-                "id=" + id +
-                ", className='" + className + '\'' +
-                '}';
-    }
 
     @Override
     public final int hashCode() {
         return this instanceof HibernateProxy ? ((HibernateProxy) this).getHibernateLazyInitializer().getPersistentClass().hashCode() : getClass().hashCode();
     }
+    @Override
+    public String toString() {
+        return "Department{" +
+                "id=" + id +
+                ", departmentName='" + departmentName + '\'' +
+                '}';
+    }
+
+
 }
