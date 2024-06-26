@@ -7,12 +7,12 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import top.shanhai1024.entity.PO.StudentClass;
 import top.shanhai1024.repository.StudentClassRepository;
-import top.shanhai1024.service.StudentClassServer;
+import top.shanhai1024.service.StudentClassService;
 
 @Service
 @AllArgsConstructor
 
-public class StudentClassServerImpl  implements StudentClassServer{
+public class StudentClassServerImpl  implements StudentClassService{
     private  final StudentClassRepository studentClassRepository;
 
 

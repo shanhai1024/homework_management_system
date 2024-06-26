@@ -4,7 +4,7 @@ import top.shanhai1024.entity.PO.PersonnelClass;
 
 import java.util.List;
 
-public interface PersonnelClassServer {
+public interface PersonnelClassService {
     List<PersonnelClass> getAllClass();
     int deletePersonnelClassesById(Integer id);
     void updatePersonnelClasses(PersonnelClass personnelClass);

@@ -8,7 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import top.shanhai1024.entity.PO.PersonnelClass;
-import top.shanhai1024.service.PersonnelClassServer;
+import top.shanhai1024.service.PersonnelClassService;
 import top.shanhai1024.service.PersonnelService;
 
 import java.util.List;
@@ -18,7 +18,7 @@ import java.util.List;
 @Transactional
 class BackendApplicationTests {
     @Autowired
-    PersonnelClassServer personnelClassServer;
+    PersonnelClassService personnelClassService;
 @Autowired
     PersonnelService personnelService;
 
@@ -42,16 +42,16 @@ class BackendApplicationTests {
     }
     @Test
     void getAllData() {
-        System.out.println(personnelClassServer.getAllClass());
+        System.out.println(personnelClassService.getAllClass());
     }
 
     @Test
     void deleteById() {
-        System.out.println(personnelClassServer.deletePersonnelClassesById(3));
+        System.out.println(personnelClassService.deletePersonnelClassesById(3));
     }
     @Test
     void save(){
-        personnelClassServer.updatePersonnelClasses(new PersonnelClass(8,"123"));
+        personnelClassService.updatePersonnelClasses(new PersonnelClass(8,"123"));
     }
 
 

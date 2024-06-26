@@ -3,6 +3,9 @@ package top.shanhai1024.entity.PO;
 系部信息
  */
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.proxy.HibernateProxy;
@@ -16,6 +19,8 @@ import java.util.Objects;
 
 @RequiredArgsConstructor
 @Table(name = "departments")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+
 public class Department {
 
     @Id
@@ -33,6 +38,7 @@ public class Department {
     @ToString.Exclude
     private List<Person> persons;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "department")
     @ToString.Exclude
     private List<StudentClass> studentClasses;

@@ -12,7 +12,7 @@ import top.shanhai1024.entity.VO.RegisterUser;
 import top.shanhai1024.repository.UserRepository;
 import top.shanhai1024.service.UserLogin;
 import top.shanhai1024.service.UserLogout;
-import top.shanhai1024.service.UserRegisterServer;
+import top.shanhai1024.service.UserRegisterSerice;
 import top.shanhai1024.utils.UserDeviceAialysis;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.AllArgsConstructor;
@@ -38,7 +38,7 @@ public class LoginController {
     private final UserLogout userLogout;
     private final UserRepository userRepository;
     private final UserDeviceAialysis userDeviceAialysis;
-    private final UserRegisterServer userRegisterServer;
+    private final UserRegisterSerice userRegisterSerice;
 
 
     /**
@@ -67,7 +67,7 @@ public class LoginController {
 @PostMapping("register")
 @SaIgnore
    public SaResult register(@RequestBody @Validated RegisterUser registerUser) {
-    return userRegisterServer.register(registerUser);
+    return userRegisterSerice.register(registerUser);
 
 }
     //    用户退出

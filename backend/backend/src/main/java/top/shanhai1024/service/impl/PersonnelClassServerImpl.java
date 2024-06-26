@@ -9,13 +9,14 @@ import top.shanhai1024.entity.PO.Personnel;
 import top.shanhai1024.entity.PO.PersonnelClass;
 
 import top.shanhai1024.repository.PersonnelClassRepository;
-import top.shanhai1024.service.PersonnelClassServer;
+import top.shanhai1024.service.PersonnelClassService;
+
 import java.util.List;
 
 
 @Service
 @AllArgsConstructor
-public class PersonnelClassServerImpl implements PersonnelClassServer {
+public class PersonnelClassServerImpl implements PersonnelClassService {
     private final PersonnelClassRepository personnelClassRepository;
 
     @Override

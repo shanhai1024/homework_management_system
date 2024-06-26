@@ -1,6 +1,8 @@
 package top.shanhai1024.entity.PO;
 
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.proxy.HibernateProxy;
@@ -16,6 +18,7 @@ import java.util.Objects;
 @Getter
 @Setter
 @RequiredArgsConstructor
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 @Table(name = "student_classes")
 public class StudentClass {
 

@@ -8,7 +8,7 @@ import lombok.val;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import top.shanhai1024.entity.PO.PersonnelClass;
-import top.shanhai1024.service.PersonnelClassServer;
+import top.shanhai1024.service.PersonnelClassService;
 
 import java.util.List;
 
@@ -19,26 +19,26 @@ import java.util.List;
 @SaIgnore
 @RequestMapping("/api/v1/personnelClass")
 public class PersonnelClassController {
-    private final PersonnelClassServer personnelClassServer;
+    private final PersonnelClassService personnelClassService;
     @GetMapping
     SaResult getAllClass(){
-        return SaResult.data( personnelClassServer.getAllClass());
+        return SaResult.data( personnelClassService.getAllClass());
     }
 
 
     @DeleteMapping("/{id}")
     public SaResult deleteClass(@PathVariable Integer id) {
-        personnelClassServer.deletePersonnelClassesById(id);
+        personnelClassService.deletePersonnelClassesById(id);
         return SaResult.ok();
     }
     @PostMapping()
     SaResult addPersonnelClasses(@RequestBody PersonnelClass personnelClass){
-        val personnelClass1 = personnelClassServer.addPersonnelClasses(personnelClass);
+        val personnelClass1 = personnelClassService.addPersonnelClasses(personnelClass);
         return SaResult.data(personnelClass1);
     }
     @PutMapping()
     SaResult updatePersonnelClasses(@RequestBody PersonnelClass personnelClass){
-        personnelClassServer.updatePersonnelClasses(personnelClass);
+        personnelClassService.updatePersonnelClasses(personnelClass);
         return SaResult.ok();
     }
 

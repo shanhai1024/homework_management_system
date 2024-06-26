@@ -6,16 +6,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import top.shanhai1024.service.StudentClassServer;
+import top.shanhai1024.service.StudentClassService;
 
 @SpringBootTest
 public class StudentTest {
     @Autowired
-    StudentClassServer studentClassServer;
+    StudentClassService studentClassService;
     @Test
     void  selectAll(){
-        Pageable pageable = PageRequest.of(1, 10);
-        val all = studentClassServer.findAll(pageable);
+        Pageable pageable = PageRequest.of(0, 10);
+        val all = studentClassService.findAll(pageable);
         all.forEach(System.out::println);
     }
 }

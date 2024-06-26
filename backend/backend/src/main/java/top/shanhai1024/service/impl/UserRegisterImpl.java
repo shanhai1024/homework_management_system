@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import top.shanhai1024.entity.PO.User;
 import top.shanhai1024.entity.VO.RegisterUser;
 import top.shanhai1024.repository.UserRepository;
-import top.shanhai1024.service.UserRegisterServer;
+import top.shanhai1024.service.UserRegisterSerice;
 import top.shanhai1024.utils.RedisUtils;
 
 import java.util.Objects;
@@ -19,7 +19,7 @@ import java.util.Objects;
  */
 @AllArgsConstructor
 @Service
-public class UserRegisterImpl implements UserRegisterServer {
+public class UserRegisterImpl implements UserRegisterSerice {
     private  final RedisUtils redisUtils;
     private  final UserRepository userRepository;
 

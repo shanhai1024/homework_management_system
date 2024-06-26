@@ -34,8 +34,7 @@ public class Teacher {
     @Column(name = "specialization")
     private String specialization;
 
-    @OneToMany(mappedBy = "teacher")
-    @ToString.Exclude
+    @OneToMany(mappedBy = "teacher", fetch = FetchType.EAGER)
     private List<StudentClass> studentClasses;
 
     @OneToMany(mappedBy = "teacher")

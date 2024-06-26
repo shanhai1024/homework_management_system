@@ -7,6 +7,6 @@ import top.shanhai1024.entity.VO.RegisterUser;
 /**
  * @author null
  */
-public interface UserRegisterServer {
+public interface UserRegisterSerice {
     public SaResult register(RegisterUser registerUser);
 }
