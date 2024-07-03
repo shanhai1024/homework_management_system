@@ -16,6 +16,7 @@ import java.util.Objects;
 @Setter
 @RequiredArgsConstructor
 @Table(name = "students")
+@AllArgsConstructor
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 
 public class Student {
@@ -59,6 +60,7 @@ public class Student {
                 ", age=" + age +
                 ", gender='" + gender + '\'' +
                 ", contactInfo='" + contactInfo + '\'' +
+                this.studentClass.getClassName()+
                 '}';
     }
 
