@@ -1,14 +1,17 @@
-package top.shanhai1024.service;
+package top.shanhai1024.service.impl;
 
 import lombok.AllArgsConstructor;
+import lombok.val;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+import top.shanhai1024.entity.DTO.TeacherDTO;
 import top.shanhai1024.entity.PO.Teacher;
 import top.shanhai1024.repository.TeacherRepository;
 import top.shanhai1024.service.TeacherService;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @AllArgsConstructor
 @Service
@@ -16,8 +19,18 @@ public class TeacherServiceImpl implements TeacherService {
     private final TeacherRepository teacherRepository;
 
     @Override
-    public List<Teacher> getAllTeachers(int page, int size) {
-        return teacherRepository.findAll(PageRequest.of(page, size)).getContent();
+    public List<TeacherDTO> getAllTeachers(int page, int size) {
+        val all = teacherRepository.findAll(PageRequest.of(page, size));
+        val collect = all.stream()
+                .map(teacher -> {
+                    return TeacherDTO.builder()
+                            .name(teacher.getName())
+                            .contactInfo(teacher.getContactInfo())
+                            .specialization(teacher.getSpecialization())
+                            .id(teacher.getId()).build();
+                }).collect(Collectors.toList());
+        return collect;
+
     }
 
     @Override

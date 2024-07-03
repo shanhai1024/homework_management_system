@@ -5,6 +5,9 @@ import org.springframework.data.domain.Pageable;
 import top.shanhai1024.entity.DTO.PersonDTO;
 import top.shanhai1024.entity.PO.Person;
 import top.shanhai1024.entity.PO.Personnel;
+import top.shanhai1024.entity.PO.RoleStatistics;
+
+import java.util.List;
 
 public interface PersonService {
  public Page<Person> findAll(Pageable pageable);
@@ -12,5 +15,6 @@ public interface PersonService {
  void deleteById(Long id);
 
  void addPersonnel(Personnel personnel);
+ RoleStatistics getRoleStatistics();
 
 }

@@ -13,7 +13,6 @@
     <!-- 表格 -->
     <el-table :data="filteredData" style="width: 100%" v-loading="loading">
       <el-table-column prop="name" label="名字"></el-table-column>
-      <el-table-column prop="department" label="部门"></el-table-column>
       <el-table-column prop="contactInfo" label="联系方式"></el-table-column>
       <el-table-column prop="specialization" label="专长"></el-table-column>
       <el-table-column label="操作">
@@ -42,13 +41,10 @@
         <el-form-item label="名字">
           <el-input v-model="editForm.name"></el-input>
         </el-form-item>
-        <el-form-item label="部门">
-          <el-input v-model="editForm.department"></el-input>
-        </el-form-item>
-        <el-form-item label="联系方式">ya
+        <el-form-item label="联系方式">
           <el-input v-model="editForm.contactInfo"></el-input>
         </el-form-item>
-        <el-form-item label="专业">
+        <el-form-item label="专长">
           <el-input v-model="editForm.specialization"></el-input>
         </el-form-item>
       </el-form>
@@ -64,13 +60,10 @@
         <el-form-item label="名字">
           <el-input v-model="addForm.name"></el-input>
         </el-form-item>
-        <el-form-item label="部门">
-          <el-input v-model="addForm.department"></el-input>
-        </el-form-item>
         <el-form-item label="联系方式">
           <el-input v-model="addForm.contactInfo"></el-input>
         </el-form-item>
-        <el-form-item label="专业">
+        <el-form-item label="专长">
           <el-input v-model="addForm.specialization"></el-input>
         </el-form-item>
       </el-form>
@@ -112,8 +105,8 @@ export default defineComponent({
       loading: false,
       editDialogVisible: false,
       addDialogVisible: false,
-      editForm: {name: "", department: "", contactInfo: "", specialization: ""},
-      addForm: {name: "", department: "", contactInfo: "", specialization: ""},
+      editForm: {id: "", name: "", contactInfo: "", specialization: ""},
+      addForm: {name: "", contactInfo: "", specialization: ""},
     });
 
     const fetchTeacherData = () => {
@@ -134,7 +127,6 @@ export default defineComponent({
               state.allTableData = data.map((item) => ({
                 id: item.id,
                 name: item.name,
-                department: item.department.name,
                 contactInfo: item.contactInfo,
                 specialization: item.specialization,
               }));
@@ -168,7 +160,7 @@ export default defineComponent({
 
     const saveEdit = () => {
       axios
-          .put(`${import.meta.env.VITE_BASE_URL}/api/v1/teachers/${state.editForm.id}`, state.editForm, {
+          .put(`${import.meta.env.VITE_BASE_URL}/teachers/${state.editForm.id}`, state.editForm, {
             headers: {
               "Content-Type": "application/json",
               token: getToken(),
@@ -212,7 +204,7 @@ export default defineComponent({
 
     const deleteTeacher = (id) => {
       axios
-          .delete(`${import.meta.env.VITE_BASE_URL}/api/v1/teachers/${id}`, {
+          .delete(`${import.meta.env.VITE_BASE_URL}/teachers/${id}`, {
             headers: {
               token: getToken(),
             },
@@ -232,13 +224,12 @@ export default defineComponent({
     const saveAdd = () => {
       const data = {
         name: state.addForm.name,
-        department: state.addForm.department,
         contactInfo: state.addForm.contactInfo,
         specialization: state.addForm.specialization,
       };
 
       axios
-          .post(`${import.meta.env.VITE_BASE_URL}/api/v1/teachers`, data, {
+          .post(`${import.meta.env.VITE_BASE_URL}/teachers`, data, {
             headers: {
               "Content-Type": "application/json",
               token: getToken(),
@@ -255,7 +246,7 @@ export default defineComponent({
           })
           .finally(() => {
             state.addDialogVisible = false;
-            state.addForm = {name: "", department: "", contactInfo: "", specialization: ""};
+            state.addForm = {name: "", contactInfo: "", specialization: ""};
           });
     };
 
@@ -284,17 +275,12 @@ export default defineComponent({
     }
   },
 });
-
-
-
 </script>
-    <style scoped>
-      .teacher-information-table {
-      padding: 20px;
-    }
-
-      .pagination-block {
-        margin-top: 20px;
-    }
-    </style>
-
+<style scoped>
+.teacher-information-table {
+  padding: 20px;
+}
+.pagination-block {
+  margin-top: 20px;
+}
+</style>

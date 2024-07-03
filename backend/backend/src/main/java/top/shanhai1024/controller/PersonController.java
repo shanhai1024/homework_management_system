@@ -7,7 +7,10 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 import top.shanhai1024.entity.PO.Personnel;
+
 import top.shanhai1024.service.PersonService;
+
+import java.util.List;
 
 @RestController
 @Slf4j
@@ -17,7 +20,7 @@ public class PersonController {
     private final PersonService personService;
 
     /*
- 获取人员统计数据
+ 获取人员数据
   */
     @GetMapping("getAllPersonnelData")
     public SaResult getAllPersonnelData(
@@ -41,6 +44,11 @@ public class PersonController {
         return SaResult.ok();
     }
 
+
+    @GetMapping("/roleCounts")
+    public SaResult getRoleCounts() {
+        return SaResult.data(personService.getRoleStatistics());
+    }
 
 
 

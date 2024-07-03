@@ -40,6 +40,7 @@ public class Teacher {
     @OneToMany(mappedBy = "teacher")
     @ToString.Exclude
     private List<TeacherClass> teacherClasses;
+
     @Override
     public String toString() {
         return "Teacher{" +

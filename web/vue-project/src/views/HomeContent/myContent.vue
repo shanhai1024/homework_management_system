@@ -344,11 +344,13 @@ watch(responseData, (newVal) => {
 }
 .businessProportion {
   background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+
   -webkit-background-clip: text;
   color: transparent;
 }
 .otherProportion {
   background-image: linear-gradient(120deg, #fccb90 0%, #d57eeb 100%);
+
   -webkit-background-clip: text;
   color: transparent;
 }

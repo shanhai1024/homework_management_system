@@ -3,6 +3,7 @@ package top.shanhai1024.controller;
 import cn.dev33.satoken.util.SaResult;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import top.shanhai1024.entity.DTO.TeacherDTO;
 import top.shanhai1024.entity.PO.Teacher;
 import top.shanhai1024.service.TeacherService;
 
@@ -16,7 +17,7 @@ public class TeacherController {
 
     @GetMapping
     public SaResult getAllTeachers(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") int size) {
-        List<Teacher> allTeachers = teacherService.getAllTeachers(page, size);
+        List<TeacherDTO> allTeachers = teacherService.getAllTeachers(page, size);
         return SaResult.data(allTeachers);
     }
 

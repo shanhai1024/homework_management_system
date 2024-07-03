@@ -9,7 +9,9 @@ import org.springframework.stereotype.Service;
 import top.shanhai1024.entity.DTO.PersonDTO;
 import top.shanhai1024.entity.PO.Person;
 import top.shanhai1024.entity.PO.Personnel;
+import top.shanhai1024.entity.PO.RoleStatistics;
 import top.shanhai1024.repository.PersonRepository;
+import top.shanhai1024.repository.PersonnelRepository;
 import top.shanhai1024.service.PersonService;
 
 import java.util.List;
@@ -20,6 +22,7 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 @Slf4j
 public class PersonServerImpl implements PersonService {
+    private final PersonnelRepository personnelRepository;
     private final PersonRepository personRepository;
 
     @Override
@@ -57,8 +60,14 @@ public class PersonServerImpl implements PersonService {
 
     @Override
     public void addPersonnel(Personnel personnel) {
-
+        personnelRepository.save(personnel);
     }
+
+    @Override
+    public RoleStatistics getRoleStatistics() {
+        return personRepository.getRoleStatistics();
+    }
+
 
 }
 
